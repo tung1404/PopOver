@@ -8,14 +8,38 @@
 
 import UIKit
 
+private let log = Logger()
+
 class SideViewController: UIViewController {
 
-    override func viewDidLoad() {
+    override func viewDidLoad()
+    {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        let recognizer = UISwipeGestureRecognizer(target: self, action: "swipeHandler:")
+        
+        recognizer.direction = UISwipeGestureRecognizerDirection.Left
+        
+        view.addGestureRecognizer(recognizer)
     }
-
+    
+    func swipeHandler(recognizer: UISwipeGestureRecognizer)
+    {
+        log.debug("%f: state = \(recognizer.state)")
+        
+        (navigationController as? SideNavigationViewController)?.hideSideMenu()
+    }
+    
+    @IBAction func pressVC1(sender: UIButton)
+    {
+        log.debug("%f")
+    }
+    
+    @IBAction func pressVC2(sender: UIButton)
+    {
+        log.debug("%f")
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

@@ -8,14 +8,29 @@
 
 import UIKit
 
+private let log = Logger()
+
 class Child2ViewController: UIViewController {
 
-    override func viewDidLoad() {
+    override func viewDidLoad()
+    {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        let recognizer = UIScreenEdgePanGestureRecognizer(target: self, action: "slideScreenEdge:")
+        
+        recognizer.edges = UIRectEdge.Left
+        
+        view.addGestureRecognizer(recognizer)
     }
 
+    func slideScreenEdge(recognizer: UIScreenEdgePanGestureRecognizer)
+    {
+        log.debug("%f: state = \(recognizer.state)")
+        
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
