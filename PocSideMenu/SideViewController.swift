@@ -21,6 +21,39 @@ class SideViewController: UIViewController {
         recognizer.direction = UISwipeGestureRecognizerDirection.Left
         
         view.addGestureRecognizer(recognizer)
+        
+        let panRecognizer = UIPanGestureRecognizer(target: self, action: "panHandler:")
+        
+        view.addGestureRecognizer(panRecognizer)
+    }
+    
+    func panHandler(recognizer: UIPanGestureRecognizer)
+    {
+        log.debug("%f: state = \(recognizer.state.rawValue)")
+
+        switch recognizer.state
+        {
+        case .Possible:
+            break
+        case .Began:
+            break
+        case .Changed:
+            if let navctrl = navigationController as? SideNavigationViewController
+            {
+                navctrl.moveSideMenu(ToPosition: recognizer.translationInView(navctrl.maskView.viewController.view).x)
+            }
+            break
+        case .Cancelled:
+            fallthrough
+        case .Ended:
+            if let navctrl = navigationController as? SideNavigationViewController
+            {
+                navctrl.endMoveSideMenu()
+            }
+            break
+        case .Failed:
+            break
+        }
     }
     
     func swipeHandler(recognizer: UISwipeGestureRecognizer)

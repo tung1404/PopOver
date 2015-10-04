@@ -19,6 +19,6 @@ class SideMenuMaskView: UIView
     {
         log.debug("%f")
         
-        navigationController.toggleSideMenu(InViewController: viewController)
+        navigationController.hideSideMenuNav()
     }
 }

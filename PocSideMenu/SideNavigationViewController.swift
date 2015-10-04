@@ -12,6 +12,12 @@ private let log = Logger()
 
 class SideNavigationViewController: UINavigationController
 {
+    struct Constants
+    {
+        static let MarginWidth: CGFloat = 50
+        static let SlideDuration: NSTimeInterval = 0.4
+    }
+    
     var maskView: SideMenuMaskView!
     var sideView: UIView!
     var sideViewController: UIViewController!
@@ -36,13 +42,13 @@ class SideNavigationViewController: UINavigationController
         //sideView.backgroundColor = UIColor.blueColor()
     }
 
-    override func hideSideMenu()
+    func hideSideMenuNav(WithDuration duration: NSTimeInterval = Constants.SlideDuration)
     {
         if maskView.viewController != nil
         {
             let currentFrame = sideView.frame
             
-            UIView.animateWithDuration(0.5, animations:
+            UIView.animateWithDuration(duration, animations:
                 {
                     self.sideView.frame = CGRect(x: -currentFrame.width, y: currentFrame.origin.y, width: currentFrame.width,height: currentFrame.height)
                 },
@@ -63,7 +69,72 @@ class SideNavigationViewController: UINavigationController
         }
     }
     
-    func showSideMenu(InViewController viewController: UIViewController)
+    var triggerActionContinuation: CGFloat = 0.66
+    
+    func moveSideMenu(ToPosition position: CGFloat)
+    {
+        guard maskView.viewController != nil else
+        {
+            log.warning("%f: side menu is not active")
+            return
+        }
+        
+        triggerActionContinuation = 0.25
+        
+        let currentFrame = sideView.frame
+        
+        UIView.animateWithDuration(Constants.SlideDuration / 10, animations:
+        {
+            self.sideView.frame = CGRect(x: position, y: currentFrame.origin.y, width: currentFrame.width,height: currentFrame.height)
+        })
+    }
+    
+    func moveSideMenuEdge(ToPosition position: CGFloat)
+    {
+        guard maskView.viewController != nil else
+        {
+            log.warning("%f: side menu is not active")
+            return
+        }
+        
+        triggerActionContinuation = 0.75
+        
+        let currentFrame = sideView.frame
+        
+        UIView.animateWithDuration(Constants.SlideDuration / 10, animations:
+        {
+                self.sideView.frame = CGRect(
+                    x: position - currentFrame.width,
+                    y: currentFrame.origin.y,
+                    width: currentFrame.width,
+                    height: currentFrame.height)
+        })
+    }
+    
+    func endMoveSideMenu()
+    {
+        guard maskView.viewController != nil else
+        {
+            log.warning("%f: side menu is not active")
+            return
+        }
+        
+        if sideView.frame.origin.x < (-maskView.viewController.view.frame.width + Constants.MarginWidth)*triggerActionContinuation
+        {
+            hideSideMenuNav(WithDuration: Constants.SlideDuration * Double(1-triggerActionContinuation))
+        }
+        else
+        {
+            let currentFrame = sideView.frame
+            
+            UIView.animateWithDuration(Constants.SlideDuration/2, animations:
+            {
+                self.sideView.frame = CGRect(x: 0, y: currentFrame.origin.y, width: currentFrame.width,height: currentFrame.height)
+            })
+        }
+    }
+    
+    func showSideMenu(InViewController viewController: UIViewController, AtPosition position: CGFloat? = nil)
     {
         if viewController.view.subviews.contains(sideView) == false
         {
@@ -74,16 +145,32 @@ class SideNavigationViewController: UINavigationController
             maskView.frame = viewController.view.frame
             viewController.view.addSubview(maskView)
             
-            sideView.frame = CGRect(x: -viewController.view.frame.width+50,y: 80,width: viewController.view.frame.width-50,height: viewController.view.frame.height)
+            let navbarHeight = navigationBar.frame.height
+            
+            if navigationBar.hidden
+            {
+                
+            }
+            
+            sideView.frame = CGRect(
+                x: -viewController.view.frame.width + Constants.MarginWidth,
+                y: navbarHeight,
+                width: viewController.view.frame.width - Constants.MarginWidth,
+                height: viewController.view.frame.height - navbarHeight)
+            
             viewController.view.addSubview(sideView)
             viewController.addChildViewController(sideViewController)
             sideViewController.didMoveToParentViewController(viewController)
             
             maskView.viewController = viewController
             
-            UIView.animateWithDuration(0.5, animations:
+            UIView.animateWithDuration(Constants.SlideDuration, animations:
             {
-                self.sideView.frame = CGRect(x: 0,y: 80,width: viewController.view.frame.width-50,height: viewController.view.frame.height)
+                self.sideView.frame = CGRect(
+                    x: position == nil ? 0 : position! - (viewController.view.frame.width - Constants.MarginWidth),
+                    y: navbarHeight,
+                    width: viewController.view.frame.width - Constants.MarginWidth,
+                    height: viewController.view.frame.height - navbarHeight)
             })
         }
         
@@ -91,18 +178,14 @@ class SideNavigationViewController: UINavigationController
     
     func toggleSideMenu(InViewController viewController: UIViewController)
     {
-        //sideViewController.beginAppearanceTransition(true, animated: true)
-        
         if viewController.view.subviews.contains(sideView)
         {
-            hideSideMenu()
+            hideSideMenuNav()
         }
         else
         {
             showSideMenu(InViewController: viewController)
         }
-        
-        //sideViewController.endAppearanceTransition()
     }
     
     override func didReceiveMemoryWarning()
