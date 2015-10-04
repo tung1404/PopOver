@@ -14,6 +14,10 @@
 		0663D68B1BC14474009020D1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0663D6891BC14474009020D1 /* LaunchScreen.storyboard */; };
 		0663D6961BC14474009020D1 /* PocSideMenuTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0663D6951BC14474009020D1 /* PocSideMenuTests.swift */; };
 		0663D6A11BC14474009020D1 /* PocSideMenuUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0663D6A01BC14474009020D1 /* PocSideMenuUITests.swift */; };
+		0663D6AF1BC14C2C009020D1 /* Child1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0663D6AE1BC14C2C009020D1 /* Child1ViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		0663D6B11BC14D41009020D1 /* Child2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0663D6B01BC14D41009020D1 /* Child2ViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		0663D6B31BC14DE5009020D1 /* SideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0663D6B21BC14DE5009020D1 /* SideViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		0663D6B51BC14EC4009020D1 /* SideNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0663D6B41BC14EC4009020D1 /* SideNavigationViewController.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +51,10 @@
 		0663D69C1BC14474009020D1 /* PocSideMenuUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PocSideMenuUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0663D6A01BC14474009020D1 /* PocSideMenuUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PocSideMenuUITests.swift; sourceTree = "<group>"; };
 		0663D6A21BC14474009020D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0663D6AE1BC14C2C009020D1 /* Child1ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Child1ViewController.swift; sourceTree = "<group>"; };
+		0663D6B01BC14D41009020D1 /* Child2ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Child2ViewController.swift; sourceTree = "<group>"; };
+		0663D6B21BC14DE5009020D1 /* SideViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideViewController.swift; sourceTree = "<group>"; };
+		0663D6B41BC14EC4009020D1 /* SideNavigationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideNavigationViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +108,10 @@
 				0663D6801BC14474009020D1 /* AppDelegate.swift */,
 				0663D6821BC14474009020D1 /* ViewController.swift */,
 				0663D6841BC14474009020D1 /* Main.storyboard */,
+				0663D6B41BC14EC4009020D1 /* SideNavigationViewController.swift */,
+				0663D6B21BC14DE5009020D1 /* SideViewController.swift */,
+				0663D6B01BC14D41009020D1 /* Child2ViewController.swift */,
+				0663D6AE1BC14C2C009020D1 /* Child1ViewController.swift */,
 				0663D6871BC14474009020D1 /* Assets.xcassets */,
 				0663D6891BC14474009020D1 /* LaunchScreen.storyboard */,
 				0663D68C1BC14474009020D1 /* Info.plist */,
@@ -255,8 +267,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0663D6B31BC14DE5009020D1 /* SideViewController.swift in Sources */,
+				0663D6AF1BC14C2C009020D1 /* Child1ViewController.swift in Sources */,
 				0663D6831BC14474009020D1 /* ViewController.swift in Sources */,
+				0663D6B11BC14D41009020D1 /* Child2ViewController.swift in Sources */,
 				0663D6811BC14474009020D1 /* AppDelegate.swift in Sources */,
+				0663D6B51BC14EC4009020D1 /* SideNavigationViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
