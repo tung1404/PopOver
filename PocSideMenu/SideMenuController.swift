@@ -20,8 +20,9 @@ class SideMenuController
 {
     struct Constants
     {
-        static let MarginWidth: CGFloat = 50
+        static let MarginWidth: CGFloat = 50 // points
         static let MinVelocity: CGFloat = 600 // points/s
+        static let ZeroVelocityTrigger: CGFloat = 50 // points/s
     }
     
     weak var navigationController: SideMenuNavigationController!
@@ -98,12 +99,19 @@ class SideMenuController
             completion: completion)
     }
     
-    func endMoveSideMenu(WithVelocity velocity: CGFloat)
+    func endMoveSideMenu(var WithVelocity velocity: CGFloat)
     {
         guard clientViewController != nil else
         {
             log.warning("%f: side menu is not active")
             return
+        }
+        
+        log.debug("%f: given velocity = \(velocity)")
+        
+        if abs(velocity) < Constants.ZeroVelocityTrigger
+        {
+            velocity = 0
         }
         
         if velocity < 0 || (velocity == 0 && sideView.frame.origin.x < -sideView.frame.width * 0.5)
