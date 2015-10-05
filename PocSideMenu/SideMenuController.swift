@@ -31,8 +31,6 @@ class SideMenuController
     var sideView: UIView!
     var sideViewController: UIViewController!
     
-    var triggerActionContinuation: CGFloat = 0.5
-    
     init()
     {
         maskView = SideMenuMaskView()
@@ -78,11 +76,9 @@ class SideMenuController
         {
             case .RightEdgeAt(let xRightEdge):
                 frameOriginX =  xRightEdge - currentFrame.width
-                triggerActionContinuation = 0.75
             
             case .LeftEdgeAt(let xLeftEdge):
                 frameOriginX = xLeftEdge
-                triggerActionContinuation = 0.25
             
         }
         
@@ -108,8 +104,7 @@ class SideMenuController
             return
         }
         
-        if velocity < 0
-            //if sideView.frame.origin.x < (-clientViewController.view.frame.width + Constants.MarginWidth)*triggerActionContinuation
+        if velocity < 0 || (velocity == 0 && sideView.frame.origin.x < -sideView.frame.width * 0.5)
         {
             hideSideMenu(WithVelocity: velocity)
         }
