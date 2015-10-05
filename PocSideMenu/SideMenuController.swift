@@ -43,6 +43,10 @@ class SideMenuController
         sideView = sideViewController.view
         
         sideView.layer.shadowOpacity = 0.5;
+        
+        let panRecognizer = UIPanGestureRecognizer(target: sideViewController, action: "sideMenuPanHandler:")
+        
+        sideView.addGestureRecognizer(panRecognizer)
     }
     
     func hideSideMenu(WithVelocity velocity: CGFloat? = nil)

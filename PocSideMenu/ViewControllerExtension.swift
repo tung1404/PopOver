@@ -74,6 +74,35 @@ extension UIViewController
         }
     }
     
+    func sideMenuPanHandler(recognizer: UIPanGestureRecognizer)
+    {
+        log.debug("%f: state = \(recognizer.state.rawValue)")
+        
+        switch recognizer.state
+        {
+        case .Possible:
+            break
+        case .Began:
+            break
+        case .Changed:
+            if let navctrl = navigationController as? SideMenuNavigationController
+            {
+                navctrl.sideMenuController.moveSideMenu(ToPosition: SideMenuPosition.LeftEdgeAt(recognizer.translationInView(navctrl.sideMenuController.clientViewController.view).x))
+            }
+            break
+        case .Cancelled:
+            fallthrough
+        case .Ended:
+            if let navctrl = navigationController as? SideMenuNavigationController
+            {
+                navctrl.sideMenuController.endMoveSideMenu(WithVelocity: recognizer.velocityInView(navctrl.sideMenuController.clientViewController.view).x)
+            }
+            break
+        case .Failed:
+            break
+        }
+    }
+    
     func showSideMenu()
     {
         if let navctrl = navigationController as? SideMenuNavigationController
