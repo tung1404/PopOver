@@ -12,7 +12,7 @@ private let log = Logger()
 
 extension UIViewController
 {
-    func sideMenuSupportEnable()
+    func sideMenuEnableSlideScreenEdge()
     {
         let recognizer = UIScreenEdgePanGestureRecognizer(target: self, action: "sideMenuSlideScreenEdge:")
         
@@ -43,7 +43,7 @@ extension UIViewController
             // the recognizer has received touches recognized as a change to the gesture. the action method will be called at the next turn of the run loop
             if let navctrl = navigationController as? SideMenuNavigationController
             {
-                navctrl.sideMenuController.moveSideMenuEdge(ToPosition: recognizer.translationInView(view).x)
+                navctrl.sideMenuController.moveSideMenu(ToPosition: SideMenuPosition.RightEdgeAt(recognizer.translationInView(view).x))
                 //navctrl.showSideMenu(InViewController: self, AtPosition: )
             }
             break

@@ -21,7 +21,7 @@ class Child1ViewController: UIViewController {
     {
         super.viewDidLoad()
 
-        sideMenuSupportEnable()
+        sideMenuEnableSlideScreenEdge()
     }
 
     @IBAction func buttonAction(sender: UIButton)

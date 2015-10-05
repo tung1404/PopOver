@@ -40,7 +40,7 @@ class SideViewController: UIViewController {
         case .Changed:
             if let navctrl = navigationController as? SideMenuNavigationController
             {
-                navctrl.sideMenuController.moveSideMenu(ToPosition: recognizer.translationInView(navctrl.sideMenuController.clientViewController.view).x)
+                navctrl.sideMenuController.moveSideMenu(ToPosition: SideMenuPosition.LeftEdgeAt(recognizer.translationInView(navctrl.sideMenuController.clientViewController.view).x))
             }
             break
         case .Cancelled:
