@@ -62,7 +62,7 @@ extension UIViewController
             
             if let navctrl = navigationController as? SideMenuNavigationController
             {
-                navctrl.sideMenuController.endMoveSideMenu()
+                navctrl.sideMenuController.endMoveSideMenu(WithVelocity: recognizer.velocityInView(view).x)
             }
             
         case .Failed:

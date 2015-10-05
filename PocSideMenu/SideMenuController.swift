@@ -21,7 +21,7 @@ class SideMenuController
     struct Constants
     {
         static let MarginWidth: CGFloat = 50
-        static let MinVelocity: CGFloat = 500 // points/s
+        static let MinVelocity: CGFloat = 600 // points/s
     }
     
     weak var navigationController: SideMenuNavigationController!
@@ -44,9 +44,9 @@ class SideMenuController
         sideView = sideViewController.view
     }
     
-    func hideSideMenu()
+    func hideSideMenu(WithVelocity velocity: CGFloat? = nil)
     {
-        moveSideMenu(ToPosition: SideMenuPosition.RightEdgeAt(0), WithCompletion:
+        moveSideMenu(ToPosition: SideMenuPosition.RightEdgeAt(0), WithVelocity: velocity, WithCompletion:
         {
             if ($0)
             {
@@ -62,7 +62,7 @@ class SideMenuController
         })
     }
     
-    func moveSideMenu(ToPosition position: SideMenuPosition, WithCompletion completion: ((Bool)->Void)? = nil)
+    func moveSideMenu(ToPosition position: SideMenuPosition, WithVelocity velocity: CGFloat? = nil, WithCompletion completion: ((Bool)->Void)? = nil)
     {
         guard clientViewController != nil else
         {
@@ -87,7 +87,7 @@ class SideMenuController
         }
         
         let translation = frameOriginX - currentFrame.origin.x
-        let duration = abs(translation) / Constants.MinVelocity
+        let duration = abs(translation) / max(Constants.MinVelocity, abs(velocity ?? Constants.MinVelocity))
         
         UIView.animateWithDuration(NSTimeInterval(duration), animations:
             {
@@ -100,7 +100,7 @@ class SideMenuController
             completion: completion)
     }
     
-    func endMoveSideMenu()
+    func endMoveSideMenu(WithVelocity velocity: CGFloat)
     {
         guard clientViewController != nil else
         {
@@ -108,13 +108,14 @@ class SideMenuController
             return
         }
         
-        if sideView.frame.origin.x < (-clientViewController.view.frame.width + Constants.MarginWidth)*triggerActionContinuation
+        if velocity < 0
+            //if sideView.frame.origin.x < (-clientViewController.view.frame.width + Constants.MarginWidth)*triggerActionContinuation
         {
-            hideSideMenu()
+            hideSideMenu(WithVelocity: velocity)
         }
         else
         {
-            moveSideMenu(ToPosition: SideMenuPosition.LeftEdgeAt(0))
+            moveSideMenu(ToPosition: SideMenuPosition.LeftEdgeAt(0), WithVelocity: velocity)
         }
     }
     

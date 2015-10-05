@@ -48,7 +48,7 @@ class SideViewController: UIViewController {
         case .Ended:
             if let navctrl = navigationController as? SideMenuNavigationController
             {
-                navctrl.sideMenuController.endMoveSideMenu()
+                navctrl.sideMenuController.endMoveSideMenu(WithVelocity: recognizer.velocityInView(navctrl.sideMenuController.clientViewController.view).x)
             }
             break
         case .Failed:
