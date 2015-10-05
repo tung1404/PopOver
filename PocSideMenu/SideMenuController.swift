@@ -21,7 +21,7 @@ class SideMenuController
     struct Constants
     {
         static let MarginWidth: CGFloat = 50
-        static let SlideDuration: NSTimeInterval = 0.4
+        static let MinVelocity: CGFloat = 500 // points/s
     }
     
     weak var navigationController: SideMenuNavigationController!
@@ -38,47 +38,31 @@ class SideMenuController
         maskView = SideMenuMaskView()
         maskView.sideMenuController = self
         
-        sideViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("SideViewController") as UIViewController
-        
-        SideViewController()
+        sideViewController = UIStoryboard(name: "Main",
+            bundle: nil).instantiateViewControllerWithIdentifier("SideViewController") as UIViewController
         
         sideView = sideViewController.view
     }
     
-    func hideSideMenu(WithDuration duration: NSTimeInterval = Constants.SlideDuration)
+    func hideSideMenu()
     {
-        guard clientViewController != nil else
+        moveSideMenu(ToPosition: SideMenuPosition.RightEdgeAt(0), WithCompletion:
         {
-            return
-        }
-        
-        let currentFrame = sideView.frame
-        
-        UIView.animateWithDuration(duration, animations:
+            if ($0)
             {
-                self.sideView.frame = CGRect(
-                    x: -currentFrame.width,
-                    y: currentFrame.origin.y,
-                    width: currentFrame.width,
-                    height: currentFrame.height)
-            },
-            completion:
-            {
-                if ($0)
-                {
-                    log.debug("%f")
-                    
-                    self.sideViewController.willMoveToParentViewController(nil)
-                    self.sideViewController.removeFromParentViewController()
-                    self.sideView.removeFromSuperview()
-                    self.maskView.removeFromSuperview()
-                    
-                    self.clientViewController = nil
-                }
-            })
+                log.debug("%f")
+                
+                self.sideViewController.willMoveToParentViewController(nil)
+                self.sideViewController.removeFromParentViewController()
+                self.sideView.removeFromSuperview()
+                self.maskView.removeFromSuperview()
+                
+                self.clientViewController = nil
+            }
+        })
     }
     
-    func moveSideMenu(ToPosition position: SideMenuPosition)
+    func moveSideMenu(ToPosition position: SideMenuPosition, WithCompletion completion: ((Bool)->Void)? = nil)
     {
         guard clientViewController != nil else
         {
@@ -102,14 +86,18 @@ class SideMenuController
             
         }
         
-        UIView.animateWithDuration(Constants.SlideDuration / 10, animations:
-        {
-            self.sideView.frame = CGRect(
-                x: frameOriginX,
-                y: currentFrame.origin.y,
-                width: currentFrame.width,
-                height: currentFrame.height)
-        })
+        let translation = frameOriginX - currentFrame.origin.x
+        let duration = abs(translation) / Constants.MinVelocity
+        
+        UIView.animateWithDuration(NSTimeInterval(duration), animations:
+            {
+                self.sideView.frame = CGRect(
+                    x: frameOriginX,
+                    y: currentFrame.origin.y,
+                    width: currentFrame.width,
+                    height: currentFrame.height)
+            },
+            completion: completion)
     }
     
     func endMoveSideMenu()
@@ -122,24 +110,15 @@ class SideMenuController
         
         if sideView.frame.origin.x < (-clientViewController.view.frame.width + Constants.MarginWidth)*triggerActionContinuation
         {
-            hideSideMenu(WithDuration: Constants.SlideDuration * Double(1-triggerActionContinuation))
+            hideSideMenu()
         }
         else
         {
-            let currentFrame = sideView.frame
-            
-            UIView.animateWithDuration(Constants.SlideDuration/2, animations:
-            {
-                self.sideView.frame = CGRect(
-                    x: 0,
-                    y: currentFrame.origin.y,
-                    width: currentFrame.width,
-                    height: currentFrame.height)
-            })
+            moveSideMenu(ToPosition: SideMenuPosition.LeftEdgeAt(0))
         }
     }
     
-    func showSideMenu(InViewController viewController: UIViewController, AtPosition position: CGFloat? = nil)
+    func showSideMenu(InViewController viewController: UIViewController, AtPosition position: SideMenuPosition = SideMenuPosition.LeftEdgeAt(0))
     {
         guard viewController.view.subviews.contains(sideView) == false else
         {
@@ -173,14 +152,7 @@ class SideMenuController
         
         clientViewController = viewController
         
-        UIView.animateWithDuration(Constants.SlideDuration, animations:
-        {
-            self.sideView.frame = CGRect(
-                x: position == nil ? 0 : position! - (viewController.view.frame.width - Constants.MarginWidth),
-                y: navbarHeight,
-                width: viewController.view.frame.width - Constants.MarginWidth,
-                height: viewController.view.frame.height - navbarHeight)
-        })
+        moveSideMenu(ToPosition: position)
     }
     
     func toggleSideMenu(InViewController viewController: UIViewController)
@@ -194,6 +166,4 @@ class SideMenuController
             showSideMenu(InViewController: viewController)
         }
     }
-    
-
 }

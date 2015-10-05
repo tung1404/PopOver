@@ -35,7 +35,8 @@ extension UIViewController
             // the recognizer has received touches recognized as the gesture. the action method will be called at the next turn of the run loop
             if let navctrl = navigationController as? SideMenuNavigationController
             {
-                navctrl.sideMenuController.showSideMenu(InViewController: self, AtPosition: 0/*recognizer.translationInView(view).x*/)
+                navctrl.sideMenuController.showSideMenu(InViewController: self,
+                    AtPosition: SideMenuPosition.RightEdgeAt(recognizer.translationInView(view).x))
             }
             break
             
