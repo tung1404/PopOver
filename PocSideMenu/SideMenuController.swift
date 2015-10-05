@@ -40,6 +40,8 @@ class SideMenuController
             bundle: nil).instantiateViewControllerWithIdentifier("SideViewController") as UIViewController
         
         sideView = sideViewController.view
+        
+        sideView.layer.shadowOpacity = 0.5;
     }
     
     func hideSideMenu(WithVelocity velocity: CGFloat? = nil)
