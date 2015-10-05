@@ -1,8 +1,8 @@
 //
-//  SideNavigationViewController.swift
+//  SideMenuController.swift
 //  PocSideMenu
 //
-//  Created by Bertrand Marlier on 04/10/2015.
+//  Created by Bertrand Marlier on 05/10/2015.
 //  Copyright © 2015 Bertrand Marlier. All rights reserved.
 //
 
@@ -10,7 +10,7 @@ import UIKit
 
 private let log = Logger()
 
-class SideNavigationViewController: UINavigationController
+class SideMenuController
 {
     struct Constants
     {
@@ -18,18 +18,19 @@ class SideNavigationViewController: UINavigationController
         static let SlideDuration: NSTimeInterval = 0.4
     }
     
+    weak var navigationController: SideMenuNavigationController!
+    weak var clientViewController: UIViewController!
+    
     var maskView: SideMenuMaskView!
     var sideView: UIView!
     var sideViewController: UIViewController!
     
-    override func viewDidLoad()
+    init()
     {
-        super.viewDidLoad()
-
-        log.debug("%f")
-        
         maskView = SideMenuMaskView()
-        maskView.navigationController = self
+        maskView.sideMenuController = self
+        
+        //maskView.navigationController = self
         
         sideViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("SideViewController") as UIViewController
         
@@ -40,11 +41,12 @@ class SideNavigationViewController: UINavigationController
         sideView = sideViewController.view
         
         //sideView.backgroundColor = UIColor.blueColor()
+        
     }
-
-    func hideSideMenuNav(WithDuration duration: NSTimeInterval = Constants.SlideDuration)
+    
+    func hideSideMenu(WithDuration duration: NSTimeInterval = Constants.SlideDuration)
     {
-        if maskView.viewController != nil
+        if clientViewController != nil
         {
             let currentFrame = sideView.frame
             
@@ -63,7 +65,7 @@ class SideNavigationViewController: UINavigationController
                         self.sideView.removeFromSuperview()
                         self.maskView.removeFromSuperview()
                         
-                        self.maskView.viewController = nil
+                        self.clientViewController = nil
                     }
                 })
         }
@@ -73,7 +75,7 @@ class SideNavigationViewController: UINavigationController
     
     func moveSideMenu(ToPosition position: CGFloat)
     {
-        guard maskView.viewController != nil else
+        guard clientViewController != nil else
         {
             log.warning("%f: side menu is not active")
             return
@@ -91,7 +93,7 @@ class SideNavigationViewController: UINavigationController
     
     func moveSideMenuEdge(ToPosition position: CGFloat)
     {
-        guard maskView.viewController != nil else
+        guard clientViewController != nil else
         {
             log.warning("%f: side menu is not active")
             return
@@ -103,25 +105,25 @@ class SideNavigationViewController: UINavigationController
         
         UIView.animateWithDuration(Constants.SlideDuration / 10, animations:
         {
-                self.sideView.frame = CGRect(
-                    x: position - currentFrame.width,
-                    y: currentFrame.origin.y,
-                    width: currentFrame.width,
-                    height: currentFrame.height)
+            self.sideView.frame = CGRect(
+                x: position - currentFrame.width,
+                y: currentFrame.origin.y,
+                width: currentFrame.width,
+                height: currentFrame.height)
         })
     }
     
     func endMoveSideMenu()
     {
-        guard maskView.viewController != nil else
+        guard clientViewController != nil else
         {
             log.warning("%f: side menu is not active")
             return
         }
         
-        if sideView.frame.origin.x < (-maskView.viewController.view.frame.width + Constants.MarginWidth)*triggerActionContinuation
+        if sideView.frame.origin.x < (-clientViewController.view.frame.width + Constants.MarginWidth)*triggerActionContinuation
         {
-            hideSideMenuNav(WithDuration: Constants.SlideDuration * Double(1-triggerActionContinuation))
+            hideSideMenu(WithDuration: Constants.SlideDuration * Double(1-triggerActionContinuation))
         }
         else
         {
@@ -145,9 +147,9 @@ class SideNavigationViewController: UINavigationController
             maskView.frame = viewController.view.frame
             viewController.view.addSubview(maskView)
             
-            let navbarHeight = navigationBar.frame.height
+            let navbarHeight = navigationController.navigationBar.frame.height
             
-            if navigationBar.hidden
+            if navigationController.navigationBar.hidden
             {
                 
             }
@@ -162,7 +164,7 @@ class SideNavigationViewController: UINavigationController
             viewController.addChildViewController(sideViewController)
             sideViewController.didMoveToParentViewController(viewController)
             
-            maskView.viewController = viewController
+            clientViewController = viewController
             
             UIView.animateWithDuration(Constants.SlideDuration, animations:
             {
@@ -180,7 +182,7 @@ class SideNavigationViewController: UINavigationController
     {
         if viewController.view.subviews.contains(sideView)
         {
-            hideSideMenuNav()
+            hideSideMenu()
         }
         else
         {
@@ -188,21 +190,5 @@ class SideNavigationViewController: UINavigationController
         }
     }
     
-    override func didReceiveMemoryWarning()
-    {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

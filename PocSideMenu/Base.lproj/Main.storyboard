@@ -136,10 +136,10 @@
             </objects>
             <point key="canvasLocation" x="826" y="1701"/>
         </scene>
-        <!--Side Navigation View Controller-->
+        <!--Side Menu Navigation Controller-->
         <scene sceneID="2qB-dn-sDK">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="eCV-ZS-mbn" customClass="SideNavigationViewController" customModule="PocSideMenu" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="eCV-ZS-mbn" customClass="SideMenuNavigationController" customModule="PocSideMenu" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Hrs-a3-spO">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>

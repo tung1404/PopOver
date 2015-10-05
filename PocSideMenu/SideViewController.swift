@@ -16,11 +16,11 @@ class SideViewController: UIViewController {
     {
         super.viewDidLoad()
 
-        let recognizer = UISwipeGestureRecognizer(target: self, action: "swipeHandler:")
+        /*let recognizer = UISwipeGestureRecognizer(target: self, action: "swipeHandler:")
         
         recognizer.direction = UISwipeGestureRecognizerDirection.Left
         
-        view.addGestureRecognizer(recognizer)
+        view.addGestureRecognizer(recognizer)*/
         
         let panRecognizer = UIPanGestureRecognizer(target: self, action: "panHandler:")
         
@@ -38,17 +38,17 @@ class SideViewController: UIViewController {
         case .Began:
             break
         case .Changed:
-            if let navctrl = navigationController as? SideNavigationViewController
+            if let navctrl = navigationController as? SideMenuNavigationController
             {
-                navctrl.moveSideMenu(ToPosition: recognizer.translationInView(navctrl.maskView.viewController.view).x)
+                navctrl.sideMenuController.moveSideMenu(ToPosition: recognizer.translationInView(navctrl.sideMenuController.clientViewController.view).x)
             }
             break
         case .Cancelled:
             fallthrough
         case .Ended:
-            if let navctrl = navigationController as? SideNavigationViewController
+            if let navctrl = navigationController as? SideMenuNavigationController
             {
-                navctrl.endMoveSideMenu()
+                navctrl.sideMenuController.endMoveSideMenu()
             }
             break
         case .Failed:
@@ -60,7 +60,7 @@ class SideViewController: UIViewController {
     {
         log.debug("%f: state = \(recognizer.state)")
         
-        (navigationController as? SideNavigationViewController)?.hideSideMenu()
+        (navigationController as? SideMenuNavigationController)?.hideSideMenu()
     }
     
     @IBAction func pressVC1(sender: UIButton)
@@ -72,21 +72,4 @@ class SideViewController: UIViewController {
     {
         log.debug("%f")
     }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

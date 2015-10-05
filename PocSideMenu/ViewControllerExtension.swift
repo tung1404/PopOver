@@ -33,17 +33,17 @@ extension UIViewController
             
         case .Began:
             // the recognizer has received touches recognized as the gesture. the action method will be called at the next turn of the run loop
-            if let navctrl = navigationController as? SideNavigationViewController
+            if let navctrl = navigationController as? SideMenuNavigationController
             {
-                navctrl.showSideMenu(InViewController: self, AtPosition: 0/*recognizer.translationInView(view).x*/)
+                navctrl.sideMenuController.showSideMenu(InViewController: self, AtPosition: 0/*recognizer.translationInView(view).x*/)
             }
             break
             
         case .Changed:
             // the recognizer has received touches recognized as a change to the gesture. the action method will be called at the next turn of the run loop
-            if let navctrl = navigationController as? SideNavigationViewController
+            if let navctrl = navigationController as? SideMenuNavigationController
             {
-                navctrl.moveSideMenuEdge(ToPosition: recognizer.translationInView(view).x)
+                navctrl.sideMenuController.moveSideMenuEdge(ToPosition: recognizer.translationInView(view).x)
                 //navctrl.showSideMenu(InViewController: self, AtPosition: )
             }
             break
@@ -59,9 +59,9 @@ extension UIViewController
             }
             */
             
-            if let navctrl = navigationController as? SideNavigationViewController
+            if let navctrl = navigationController as? SideMenuNavigationController
             {
-                navctrl.endMoveSideMenu()
+                navctrl.sideMenuController.endMoveSideMenu()
             }
             
         case .Failed:
@@ -75,25 +75,25 @@ extension UIViewController
     
     func showSideMenu()
     {
-        if let navctrl = navigationController as? SideNavigationViewController
+        if let navctrl = navigationController as? SideMenuNavigationController
         {
-            navctrl.showSideMenu(InViewController: self)
+            navctrl.sideMenuController.showSideMenu(InViewController: self)
         }
     }
     
     func hideSideMenu()
     {
-        if let navctrl = navigationController as? SideNavigationViewController
+        if let navctrl = navigationController as? SideMenuNavigationController
         {
-            navctrl.hideSideMenuNav()
+            navctrl.sideMenuController.hideSideMenu()
         }
     }
     
     func toggleSideMenu()
     {
-        if let navctrl = navigationController as? SideNavigationViewController
+        if let navctrl = navigationController as? SideMenuNavigationController
         {
-            navctrl.toggleSideMenu(InViewController: self)
+            navctrl.sideMenuController.toggleSideMenu(InViewController: self)
         }
     }
 }
