@@ -16,11 +16,18 @@ enum SideMenuPosition
     case LeftEdgeAt(CGFloat)
 }
 
-class SideMenuController
+enum PanAxis
+{
+    case Undefined
+    case Horizontal
+    case Vertical
+}
+
+class SideMenuController: NSObject, UIGestureRecognizerDelegate
 {
     struct Constants
     {
-        static let MarginWidth: CGFloat = 50 // points
+        static let MarginWidth: CGFloat = 100 // points
         static let MinVelocity: CGFloat = 600 // points/s
         static let ZeroVelocityTrigger: CGFloat = 50 // points/s
     }
@@ -31,47 +38,92 @@ class SideMenuController
     var maskView: SideMenuMaskView!
     var sideView: UIView!
     var sideViewController: UIViewController!
-    
-    init()
+
+    var sideMenuFullyDeployed: Bool
     {
+        return sideView.frame.origin.x == 0
+    }
+
+    var lockedPanAxis: PanAxis = .Undefined
+    
+    override init()
+    {
+        super.init()
+        
         maskView = SideMenuMaskView()
         maskView.sideMenuController = self
         
         sideViewController = UIStoryboard(name: "Main",
-            bundle: nil).instantiateViewControllerWithIdentifier("SideViewController") as UIViewController
+            bundle: nil).instantiateViewControllerWithIdentifier("SideMenuViewController") as UIViewController
         
         sideView = sideViewController.view
         
-        sideView.layer.shadowOpacity = 0.5;
+        sideView.layer.shadowRadius  = 5;
+        sideView.layer.shadowOpacity = 1;
         
         let panRecognizer = UIPanGestureRecognizer(target: sideViewController, action: "sideMenuPanHandler:")
+        
+        panRecognizer.delegate = self
         
         sideView.addGestureRecognizer(panRecognizer)
     }
     
-    func hideSideMenu(WithVelocity velocity: CGFloat? = nil)
+    // MARK: - UIGestureRecognizerDelegate
+    
+    @objc func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWithGestureRecognizer otherGestureRecognizer: UIGestureRecognizer) -> Bool
     {
-        moveSideMenu(ToPosition: SideMenuPosition.RightEdgeAt(0), WithVelocity: velocity, WithCompletion:
-        {
-            if ($0)
-            {
-                log.debug("%f")
-                
-                self.sideViewController.willMoveToParentViewController(nil)
-                self.sideViewController.removeFromParentViewController()
-                self.sideView.removeFromSuperview()
-                self.maskView.removeFromSuperview()
-                
-                self.clientViewController = nil
-            }
-        })
+        return sideMenuFullyDeployed
     }
     
-    func moveSideMenu(ToPosition position: SideMenuPosition, WithVelocity velocity: CGFloat? = nil, WithCompletion completion: ((Bool)->Void)? = nil)
+    // MARK: - API
+    
+    func detachSideMenu()
     {
         guard clientViewController != nil else
         {
-            log.warning("%f: side menu is not active")
+            log.info("%f: side menu is not active")
+            return
+        }
+        
+        log.debug("%f")
+        
+        sideViewController.willMoveToParentViewController(nil)
+        sideViewController.removeFromParentViewController()
+        sideView.removeFromSuperview()
+        maskView.removeFromSuperview()
+        
+        clientViewController = nil
+    }
+    
+    func hideSideMenu(WithVelocity velocity: CGFloat? = nil, WithAnimation animation: Bool = true)
+    {
+        let detachAction: (Bool)->Void =
+        {
+            if ($0)
+            {
+                self.detachSideMenu()
+            }
+        }
+        
+        if animation
+        {
+            moveSideMenu(ToPosition: SideMenuPosition.RightEdgeAt(0), WithVelocity: velocity, WithCompletion: detachAction)
+        }
+        else
+        {
+            detachAction(true)
+        }
+    }
+    
+    func moveSideMenu(
+        ToPosition position: SideMenuPosition,
+        WithAnimation animation: Bool = true,
+        WithVelocity velocity: CGFloat? = nil,
+        WithCompletion completion: ((Bool)->Void)? = nil)
+    {
+        guard clientViewController != nil else
+        {
+            log.info("%f: side menu is not active")
             return
         }
         
@@ -83,26 +135,39 @@ class SideMenuController
         {
             case .RightEdgeAt(let xRightEdge):
                 frameOriginX =  xRightEdge - currentFrame.width
-            
+                
             case .LeftEdgeAt(let xLeftEdge):
                 frameOriginX = xLeftEdge
-            
         }
         
         let translation = frameOriginX - currentFrame.origin.x
         let duration = abs(translation) / max(Constants.MinVelocity, abs(velocity ?? Constants.MinVelocity))
         
-        UIView.animateWithDuration(NSTimeInterval(duration), animations:
-            {
-                self.sideView.frame = CGRect(
-                    x: frameOriginX,
-                    y: currentFrame.origin.y,
-                    width: currentFrame.width,
-                    height: currentFrame.height)
-            },
-            completion: completion)
+        let animate =
+        {
+            self.sideView.frame = CGRect(
+                x: frameOriginX,
+                y: currentFrame.origin.y,
+                width: currentFrame.width,
+                height: currentFrame.height)
+        }
+        
+        if animation
+        {
+            UIView.animateWithDuration(
+                NSTimeInterval(duration),
+                delay: 0,
+                options: UIViewAnimationOptions.CurveEaseOut,
+                animations: animate,
+                completion: completion)
+        }
+        else
+        {
+            animate()
+            completion?(true)
+        }
     }
-    
+
     func endMoveSideMenu(var WithVelocity velocity: CGFloat)
     {
         guard clientViewController != nil else
@@ -127,35 +192,28 @@ class SideMenuController
             moveSideMenu(ToPosition: SideMenuPosition.LeftEdgeAt(0), WithVelocity: velocity)
         }
     }
-    
+
     func showSideMenu(InViewController viewController: UIViewController, AtPosition position: SideMenuPosition = SideMenuPosition.LeftEdgeAt(0))
     {
         guard viewController.view.subviews.contains(sideView) == false else
         {
-            // Side Menu is already inserted
+            log.info("%f: side Menu is already inserted")
             return
         }
         
-        hideSideMenu()
+        detachSideMenu()
         
         log.debug("%f: show side menu")
         
         maskView.frame = viewController.view.frame
-        viewController.view.addSubview(maskView)
-        
-        let navbarHeight = navigationController.navigationBar.frame.height
-        
-        if navigationController.navigationBar.hidden
-        {
-            
-        }
         
         sideView.frame = CGRect(
             x: -viewController.view.frame.width + Constants.MarginWidth,
-            y: navbarHeight,
+            y: 0,
             width: viewController.view.frame.width - Constants.MarginWidth,
-            height: viewController.view.frame.height - navbarHeight)
+            height: viewController.view.frame.height)
         
+        viewController.view.addSubview(maskView)
         viewController.view.addSubview(sideView)
         viewController.addChildViewController(sideViewController)
         sideViewController.didMoveToParentViewController(viewController)

@@ -15,36 +15,20 @@ class Child2ViewController: UIViewController {
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        
+        sideMenuEnable()
 
-        // Do any additional setup after loading the view.
-        
-        let recognizer = UIScreenEdgePanGestureRecognizer(target: self, action: "slideScreenEdge:")
-        
-        recognizer.edges = UIRectEdge.Left
-        
-        view.addGestureRecognizer(recognizer)
     }
 
-    func slideScreenEdge(recognizer: UIScreenEdgePanGestureRecognizer)
+    @IBAction func toggleSideMenuCommand(sender: UIButton)
     {
-        log.debug("%f: state = \(recognizer.state)")
+        toggleSideMenu()
+    }
+    
+    override func viewWillDisappear(animated: Bool)
+    {
+        log.debug("%f: animated = \(animated)")
         
+        hideSideMenu(WithAnimation: false)
     }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

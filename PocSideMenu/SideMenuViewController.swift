@@ -10,7 +10,7 @@ import UIKit
 
 private let log = Logger()
 
-class SideViewController: UIViewController
+class SideMenuViewController: UITableViewController
 {
     @IBAction func pressVC1(sender: UIButton)
     {

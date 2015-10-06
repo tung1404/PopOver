@@ -10,18 +10,13 @@ import UIKit
 
 private let log = Logger()
 
-protocol SideMenuSupportDelegate
-{
-    
-}
-
 class Child1ViewController: UIViewController {
 
     override func viewDidLoad()
     {
         super.viewDidLoad()
 
-        sideMenuEnableSlideScreenEdge()
+        sideMenuEnable()
     }
 
     @IBAction func buttonAction(sender: UIButton)
@@ -38,6 +33,6 @@ class Child1ViewController: UIViewController {
     {
         log.debug("%f")
         
-        hideSideMenu()
+        hideSideMenu(WithAnimation: false)
     }
 }
