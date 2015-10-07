@@ -220,6 +220,12 @@ class SideMenuController: NSObject, UIGestureRecognizerDelegate
         
         clientViewController = viewController
         
+        if let scrollView = sideView as? UIScrollView
+        {
+            log.debug("reset scroll view")
+            scrollView.contentOffset = CGPointZero
+        }
+        
         moveSideMenu(ToPosition: position)
     }
     
