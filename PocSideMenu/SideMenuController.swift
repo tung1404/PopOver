@@ -230,7 +230,11 @@ class SideMenuController: NSObject, UIGestureRecognizerDelegate
         
         log.debug("%f: show side menu")
         
-        maskView.frame = viewController.view.frame
+        maskView.frame = CGRect(
+            x: 0,
+            y: 0,
+            width: viewController.view.frame.width,
+            height: viewController.view.frame.height)
         
         sideView.frame = CGRect(
             x: -viewController.view.frame.width + Constants.MarginWidth,
