@@ -129,7 +129,7 @@ class SideMenuController: NSObject, UIGestureRecognizerDelegate
         
         let currentFrame = sideView.frame
         
-        let frameOriginX: CGFloat
+        var frameOriginX: CGFloat
         
         switch position
         {
@@ -138,6 +138,11 @@ class SideMenuController: NSObject, UIGestureRecognizerDelegate
                 
             case .LeftEdgeAt(let xLeftEdge):
                 frameOriginX = xLeftEdge
+        }
+        
+        if frameOriginX > 0
+        {
+            frameOriginX = 0
         }
         
         let translation = frameOriginX - currentFrame.origin.x
