@@ -75,7 +75,8 @@ class SideMenuController: NSObject, UIGestureRecognizerDelegate
         sideView = sideViewController.view
         
         sideView.layer.shadowRadius  = 5;
-        sideView.layer.shadowOpacity = 1;
+        sideView.layer.shadowOpacity = 0.4;
+        sideView.clipsToBounds = false
         
         let panRecognizer = UIPanGestureRecognizer(target: sideViewController, action: "sideMenuPanHandler:")
         
