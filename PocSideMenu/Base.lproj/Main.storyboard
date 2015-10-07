@@ -111,7 +111,7 @@
         <!--Side Menu Navigation Controller-->
         <scene sceneID="2qB-dn-sDK">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="eCV-ZS-mbn" customClass="SideMenuNavigationController" customModule="PocSideMenu" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController id="eCV-ZS-mbn" customClass="SideMenuNavigationController" customModule="PocSideMenu" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Hrs-a3-spO">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -124,7 +124,7 @@
                         <userDefinedRuntimeAttribute type="string" keyPath="sideMenuViewControllerIdentifier" value="SideMenuViewController"/>
                     </userDefinedRuntimeAttributes>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="n0l-IA-qg2"/>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="tRH-nN-j4Q"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nQI-7l-Uop" userLabel="First Responder" sceneMemberID="firstResponder"/>
