@@ -12,14 +12,13 @@ private let log = Logger()
 
 class SideMenuMaskView: UIView
 {
-    //weak var navigationController: SideNavigationViewController!
-    //weak var viewController: UIViewController!
     weak var sideMenuController: SideMenuController!
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?)
     {
         log.debug("%f")
         
-        sideMenuController.hideSideMenu()
+        sideMenuController.hide()
     }
+    
 }

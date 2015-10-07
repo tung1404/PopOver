@@ -10,9 +10,14 @@ import UIKit
 
 private let log = Logger()
 
+@IBDesignable
 class SideMenuNavigationController: UINavigationController
 {
+    @IBInspectable var sideMenuBundleName: String!;
+    @IBInspectable var sideMenuViewControllerIdentifier: String!;
+    
     var sideMenuController: SideMenuController!
+    
     
     override func viewDidLoad()
     {
@@ -20,26 +25,9 @@ class SideMenuNavigationController: UINavigationController
 
         log.debug("%f")
         
-        sideMenuController = SideMenuController()
-        
-        sideMenuController.navigationController = self
+        sideMenuController = SideMenuController(
+            InBundle: sideMenuBundleName,
+            WithIdentifier: sideMenuViewControllerIdentifier,
+            WithNavigationController: self)
     }
-
-    override func didReceiveMemoryWarning()
-    {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

@@ -39,22 +39,24 @@ class SideMenuController: NSObject, UIGestureRecognizerDelegate
     var sideView: UIView!
     var sideViewController: UIViewController!
 
-    var sideMenuFullyDeployed: Bool
+    var fullyDeployed: Bool
     {
         return sideView.frame.origin.x == 0
     }
 
     var lockedPanAxis: PanAxis = .Undefined
     
-    override init()
+    init(InBundle bundle: String, WithIdentifier identifier: String, WithNavigationController navigationController: SideMenuNavigationController)
     {
         super.init()
+        
+        self.navigationController = navigationController
         
         maskView = SideMenuMaskView()
         maskView.sideMenuController = self
         
-        sideViewController = UIStoryboard(name: "Main",
-            bundle: nil).instantiateViewControllerWithIdentifier("SideMenuViewController") as UIViewController
+        sideViewController = UIStoryboard(name: bundle,
+            bundle: nil).instantiateViewControllerWithIdentifier(identifier) as UIViewController
         
         sideView = sideViewController.view
         
@@ -72,12 +74,12 @@ class SideMenuController: NSObject, UIGestureRecognizerDelegate
     
     @objc func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWithGestureRecognizer otherGestureRecognizer: UIGestureRecognizer) -> Bool
     {
-        return sideMenuFullyDeployed
+        return fullyDeployed
     }
     
     // MARK: - API
     
-    func detachSideMenu()
+    func detach()
     {
         guard clientViewController != nil else
         {
@@ -95,19 +97,19 @@ class SideMenuController: NSObject, UIGestureRecognizerDelegate
         clientViewController = nil
     }
     
-    func hideSideMenu(WithVelocity velocity: CGFloat? = nil, WithAnimation animation: Bool = true)
+    func hide(WithVelocity velocity: CGFloat? = nil, WithAnimation animation: Bool = true)
     {
         let detachAction: (Bool)->Void =
         {
             if ($0)
             {
-                self.detachSideMenu()
+                self.detach()
             }
         }
         
         if animation
         {
-            moveSideMenu(ToPosition: SideMenuPosition.RightEdgeAt(0), WithVelocity: velocity, WithCompletion: detachAction)
+            move(ToPosition: SideMenuPosition.RightEdgeAt(0), WithVelocity: velocity, WithCompletion: detachAction)
         }
         else
         {
@@ -115,7 +117,7 @@ class SideMenuController: NSObject, UIGestureRecognizerDelegate
         }
     }
     
-    func moveSideMenu(
+    func move(
         ToPosition position: SideMenuPosition,
         WithAnimation animation: Bool = true,
         WithVelocity velocity: CGFloat? = nil,
@@ -173,7 +175,7 @@ class SideMenuController: NSObject, UIGestureRecognizerDelegate
         }
     }
 
-    func endMoveSideMenu(var WithVelocity velocity: CGFloat)
+    func drop(var WithVelocity velocity: CGFloat)
     {
         guard clientViewController != nil else
         {
@@ -190,15 +192,15 @@ class SideMenuController: NSObject, UIGestureRecognizerDelegate
         
         if velocity < 0 || (velocity == 0 && sideView.frame.origin.x < -sideView.frame.width * 0.5)
         {
-            hideSideMenu(WithVelocity: velocity)
+            hide(WithVelocity: velocity)
         }
         else
         {
-            moveSideMenu(ToPosition: SideMenuPosition.LeftEdgeAt(0), WithVelocity: velocity)
+            move(ToPosition: SideMenuPosition.LeftEdgeAt(0), WithVelocity: velocity)
         }
     }
 
-    func showSideMenu(InViewController viewController: UIViewController, AtPosition position: SideMenuPosition = SideMenuPosition.LeftEdgeAt(0))
+    func show(InViewController viewController: UIViewController, AtPosition position: SideMenuPosition = SideMenuPosition.LeftEdgeAt(0))
     {
         guard viewController.view.subviews.contains(sideView) == false else
         {
@@ -206,7 +208,7 @@ class SideMenuController: NSObject, UIGestureRecognizerDelegate
             return
         }
         
-        detachSideMenu()
+        detach()
         
         log.debug("%f: show side menu")
         
@@ -231,18 +233,18 @@ class SideMenuController: NSObject, UIGestureRecognizerDelegate
             scrollView.contentOffset = CGPointZero
         }
         
-        moveSideMenu(ToPosition: position)
+        move(ToPosition: position)
     }
     
-    func toggleSideMenu(InViewController viewController: UIViewController)
+    func toggle(InViewController viewController: UIViewController)
     {
         if viewController.view.subviews.contains(sideView)
         {
-            hideSideMenu()
+            hide()
         }
         else
         {
-            showSideMenu(InViewController: viewController)
+            show(InViewController: viewController)
         }
     }
 }

@@ -91,7 +91,6 @@
 		06115F591BC395DC00D8445D /* Example */ = {
 			isa = PBXGroup;
 			children = (
-				0663D6B41BC14EC4009020D1 /* SideMenuNavigationController.swift */,
 				0663D6B21BC14DE5009020D1 /* SideMenuViewController.swift */,
 				0663D6B01BC14D41009020D1 /* Child2ViewController.swift */,
 				0663D6AE1BC14C2C009020D1 /* Child1ViewController.swift */,
@@ -155,6 +154,7 @@
 		0663D6BA1BC1614C009020D1 /* SideMenu */ = {
 			isa = PBXGroup;
 			children = (
+				0663D6B41BC14EC4009020D1 /* SideMenuNavigationController.swift */,
 				067934701BC299EE0038B2EA /* SideMenuController.swift */,
 				0663D6B81BC16050009020D1 /* SideMenuMaskView.swift */,
 				0663D6BB1BC1B092009020D1 /* ViewControllerExtension.swift */,
