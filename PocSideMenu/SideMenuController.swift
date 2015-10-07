@@ -23,6 +23,19 @@ enum PanAxis
     case Vertical
 }
 
+class SideMenuMaskView: UIView
+{
+    weak var sideMenuController: SideMenuController!
+    
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?)
+    {
+        log.debug("%f")
+        
+        sideMenuController.hide()
+    }
+    
+}
+
 class SideMenuController: NSObject, UIGestureRecognizerDelegate
 {
     struct Constants
