@@ -74,7 +74,7 @@ public class Logger
     
     init(name: String = __FILE__)
     {
-        config = Logger.controller.config(name)
+        config = Logger.controller.config(Logger.strip(FileName: name))
     }
     
     public static func set(Level level: Level)

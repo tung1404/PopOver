@@ -30,6 +30,7 @@ class SideMenuController: NSObject, UIGestureRecognizerDelegate
         static let MarginWidth: CGFloat = 100 // points
         static let MinVelocity: CGFloat = 600 // points/s
         static let ZeroVelocityTrigger: CGFloat = 50 // points/s
+        static let MaskAlpha: CGFloat = 0.2
     }
     
     weak var navigationController: SideMenuNavigationController!
@@ -157,6 +158,10 @@ class SideMenuController: NSObject, UIGestureRecognizerDelegate
                 y: currentFrame.origin.y,
                 width: currentFrame.width,
                 height: currentFrame.height)
+            
+            let alpha = (currentFrame.width + frameOriginX)/currentFrame.width * Constants.MaskAlpha
+            
+            self.maskView.backgroundColor = UIColor(hue: 0, saturation: 0, brightness: 0, alpha: alpha)
         }
         
         if animation
