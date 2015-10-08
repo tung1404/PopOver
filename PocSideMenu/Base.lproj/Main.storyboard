@@ -503,23 +503,28 @@
                                         <animations/>
                                         <color key="backgroundColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="Zpu-EK-es9" style="IBUITableViewCellStyleDefault" id="SJi-n3-ORY">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="SJi-n3-ORY">
                                         <rect key="frame" x="0.0" y="568" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="SJi-n3-ORY" id="sFC-1B-dn7">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Option Menu 3" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Zpu-EK-es9">
-                                                    <rect key="frame" x="15" y="0.0" width="570" height="44"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fD4-DI-5Wo">
+                                                    <rect key="frame" x="16" y="8" width="576" height="30"/>
                                                     <animations/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <color key="textColor" red="0.40000000600000002" green="0.80000001190000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
+                                                    <state key="normal" title="Close Side Menu"/>
+                                                    <connections>
+                                                        <action selector="closeSideMenuCommand:" destination="l4m-OS-Vmf" eventType="touchUpInside" id="7qw-Nb-Iaw"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <animations/>
+                                            <constraints>
+                                                <constraint firstItem="fD4-DI-5Wo" firstAttribute="trailing" secondItem="sFC-1B-dn7" secondAttribute="trailingMargin" id="0Da-9z-sCQ"/>
+                                                <constraint firstItem="fD4-DI-5Wo" firstAttribute="top" secondItem="sFC-1B-dn7" secondAttribute="topMargin" id="Ryn-UQ-vU9"/>
+                                                <constraint firstItem="fD4-DI-5Wo" firstAttribute="leading" secondItem="sFC-1B-dn7" secondAttribute="leadingMargin" constant="8" id="dTj-1n-Ssn"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <animations/>
                                         <color key="backgroundColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>

@@ -12,13 +12,8 @@ private let log = Logger()
 
 class SideMenuViewController: UITableViewController
 {
-    @IBAction func pressVC1(sender: UIButton)
+    @IBAction func closeSideMenuCommand(sender: UIButton)
     {
-        log.debug("%f")
-    }
-    
-    @IBAction func pressVC2(sender: UIButton)
-    {
-        log.debug("%f")
+        hideSideMenu()
     }
 }
