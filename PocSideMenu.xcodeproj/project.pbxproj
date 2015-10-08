@@ -20,6 +20,7 @@
 		0663D6B71BC15080009020D1 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0663D6B61BC15080009020D1 /* Logger.swift */; settings = {ASSET_TAGS = (); }; };
 		0663D6BC1BC1B092009020D1 /* ViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0663D6BB1BC1B092009020D1 /* ViewControllerExtension.swift */; settings = {ASSET_TAGS = (); }; };
 		067934711BC299EE0038B2EA /* SideMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067934701BC299EE0038B2EA /* SideMenuController.swift */; settings = {ASSET_TAGS = (); }; };
+		068A222D1BC63B3E009875F6 /* Child3ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 068A222C1BC63B3E009875F6 /* Child3ViewController.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +60,7 @@
 		0663D6B61BC15080009020D1 /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		0663D6BB1BC1B092009020D1 /* ViewControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerExtension.swift; sourceTree = "<group>"; };
 		067934701BC299EE0038B2EA /* SideMenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideMenuController.swift; sourceTree = "<group>"; };
+		068A222C1BC63B3E009875F6 /* Child3ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Child3ViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,8 +92,9 @@
 			isa = PBXGroup;
 			children = (
 				0663D6B21BC14DE5009020D1 /* SideMenuViewController.swift */,
-				0663D6B01BC14D41009020D1 /* Child2ViewController.swift */,
 				0663D6AE1BC14C2C009020D1 /* Child1ViewController.swift */,
+				0663D6B01BC14D41009020D1 /* Child2ViewController.swift */,
+				068A222C1BC63B3E009875F6 /* Child3ViewController.swift */,
 			);
 			name = Example;
 			sourceTree = "<group>";
@@ -296,6 +299,7 @@
 				067934711BC299EE0038B2EA /* SideMenuController.swift in Sources */,
 				0663D6BC1BC1B092009020D1 /* ViewControllerExtension.swift in Sources */,
 				0663D6B71BC15080009020D1 /* Logger.swift in Sources */,
+				068A222D1BC63B3E009875F6 /* Child3ViewController.swift in Sources */,
 				0663D6811BC14474009020D1 /* AppDelegate.swift in Sources */,
 				0663D6B51BC14EC4009020D1 /* SideMenuNavigationController.swift in Sources */,
 			);
