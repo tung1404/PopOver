@@ -51,7 +51,7 @@
                         </connections>
                     </view>
                     <navigationItem key="navigationItem" id="VeZ-XC-AFZ">
-                        <barButtonItem key="rightBarButtonItem" title="Toggle Menu" id="6V7-gk-uPM">
+                        <barButtonItem key="rightBarButtonItem" title="Toggle Side Menu" id="6V7-gk-uPM">
                             <connections>
                                 <action selector="toggleSideMenu:" destination="BYZ-38-t0r" id="qHk-zP-eiy"/>
                             </connections>
@@ -116,7 +116,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <animations/>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                         <sections>
                             <tableViewSection id="46z-6q-WBj">
                                 <cells>
@@ -132,7 +132,7 @@
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -299,7 +299,7 @@
                     </userDefinedRuntimeAttributes>
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="tRH-nN-j4Q"/>
-                        <segue destination="l4m-OS-Vmf" kind="show" id="Vb8-AD-Slk"/>
+                        <segue destination="l4m-OS-Vmf" kind="show" identifier="ToSideMenuViewController" id="Vb8-AD-Slk"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nQI-7l-Uop" userLabel="First Responder" sceneMemberID="firstResponder"/>
