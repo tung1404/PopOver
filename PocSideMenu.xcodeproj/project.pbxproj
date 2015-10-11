@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		064D6E771BCA7C5300EDDD91 /* Child3ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064D6E761BCA7C5300EDDD91 /* Child3ViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		0663D6811BC14474009020D1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0663D6801BC14474009020D1 /* AppDelegate.swift */; };
 		0663D6861BC14474009020D1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0663D6841BC14474009020D1 /* Main.storyboard */; };
 		0663D6881BC14474009020D1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0663D6871BC14474009020D1 /* Assets.xcassets */; };
@@ -40,6 +41,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		064D6E761BCA7C5300EDDD91 /* Child3ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Child3ViewController.swift; sourceTree = "<group>"; };
 		0663D67D1BC14474009020D1 /* PocSideMenu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PocSideMenu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0663D6801BC14474009020D1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0663D6851BC14474009020D1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -91,8 +93,9 @@
 			children = (
 				0663D6B41BC14EC4009020D1 /* SideMenuNavigationController.swift */,
 				0663D6B21BC14DE5009020D1 /* SideMenuViewController.swift */,
-				0663D6B01BC14D41009020D1 /* Child2ViewController.swift */,
 				0663D6AE1BC14C2C009020D1 /* Child1ViewController.swift */,
+				0663D6B01BC14D41009020D1 /* Child2ViewController.swift */,
+				064D6E761BCA7C5300EDDD91 /* Child3ViewController.swift */,
 			);
 			name = Example;
 			sourceTree = "<group>";
@@ -298,6 +301,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				064D6E771BCA7C5300EDDD91 /* Child3ViewController.swift in Sources */,
 				0663D6B31BC14DE5009020D1 /* SideMenuViewController.swift in Sources */,
 				0663D6AF1BC14C2C009020D1 /* Child1ViewController.swift in Sources */,
 				0663D6B11BC14D41009020D1 /* Child2ViewController.swift in Sources */,
