@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Logger
 
 private let log = Logger()
 
