@@ -12,8 +12,6 @@
 		0663D6861BC14474009020D1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0663D6841BC14474009020D1 /* Main.storyboard */; };
 		0663D6881BC14474009020D1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0663D6871BC14474009020D1 /* Assets.xcassets */; };
 		0663D68B1BC14474009020D1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0663D6891BC14474009020D1 /* LaunchScreen.storyboard */; };
-		0663D6961BC14474009020D1 /* PocSideMenuTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0663D6951BC14474009020D1 /* PocSideMenuTests.swift */; };
-		0663D6A11BC14474009020D1 /* PocSideMenuUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0663D6A01BC14474009020D1 /* PocSideMenuUITests.swift */; };
 		0663D6AF1BC14C2C009020D1 /* Child1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0663D6AE1BC14C2C009020D1 /* Child1ViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		0663D6B11BC14D41009020D1 /* Child2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0663D6B01BC14D41009020D1 /* Child2ViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		0663D6B31BC14DE5009020D1 /* SideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0663D6B21BC14DE5009020D1 /* SideMenuViewController.swift */; settings = {ASSET_TAGS = (); }; };
@@ -23,23 +21,6 @@
 		067934711BC299EE0038B2EA /* SideMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067934701BC299EE0038B2EA /* SideMenuController.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		0663D6921BC14474009020D1 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 0663D6751BC14474009020D1 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 0663D67C1BC14474009020D1;
-			remoteInfo = PocSideMenu;
-		};
-		0663D69D1BC14474009020D1 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 0663D6751BC14474009020D1 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 0663D67C1BC14474009020D1;
-			remoteInfo = PocSideMenu;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
 		064D6E761BCA7C5300EDDD91 /* Child3ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Child3ViewController.swift; sourceTree = "<group>"; };
 		0663D67D1BC14474009020D1 /* PocSideMenu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PocSideMenu.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -48,10 +29,8 @@
 		0663D6871BC14474009020D1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0663D68A1BC14474009020D1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0663D68C1BC14474009020D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		0663D6911BC14474009020D1 /* PocSideMenuTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PocSideMenuTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0663D6951BC14474009020D1 /* PocSideMenuTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PocSideMenuTests.swift; sourceTree = "<group>"; };
 		0663D6971BC14474009020D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		0663D69C1BC14474009020D1 /* PocSideMenuUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PocSideMenuUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0663D6A01BC14474009020D1 /* PocSideMenuUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PocSideMenuUITests.swift; sourceTree = "<group>"; };
 		0663D6A21BC14474009020D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0663D6AE1BC14C2C009020D1 /* Child1ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Child1ViewController.swift; sourceTree = "<group>"; };
@@ -65,20 +44,6 @@
 
 /* Begin PBXFrameworksBuildPhase section */
 		0663D67A1BC14474009020D1 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		0663D68E1BC14474009020D1 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		0663D6991BC14474009020D1 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -115,8 +80,6 @@
 			isa = PBXGroup;
 			children = (
 				0663D67D1BC14474009020D1 /* PocSideMenu.app */,
-				0663D6911BC14474009020D1 /* PocSideMenuTests.xctest */,
-				0663D69C1BC14474009020D1 /* PocSideMenuUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -190,42 +153,6 @@
 			productReference = 0663D67D1BC14474009020D1 /* PocSideMenu.app */;
 			productType = "com.apple.product-type.application";
 		};
-		0663D6901BC14474009020D1 /* PocSideMenuTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 0663D6A81BC14474009020D1 /* Build configuration list for PBXNativeTarget "PocSideMenuTests" */;
-			buildPhases = (
-				0663D68D1BC14474009020D1 /* Sources */,
-				0663D68E1BC14474009020D1 /* Frameworks */,
-				0663D68F1BC14474009020D1 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				0663D6931BC14474009020D1 /* PBXTargetDependency */,
-			);
-			name = PocSideMenuTests;
-			productName = PocSideMenuTests;
-			productReference = 0663D6911BC14474009020D1 /* PocSideMenuTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		0663D69B1BC14474009020D1 /* PocSideMenuUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 0663D6AB1BC14474009020D1 /* Build configuration list for PBXNativeTarget "PocSideMenuUITests" */;
-			buildPhases = (
-				0663D6981BC14474009020D1 /* Sources */,
-				0663D6991BC14474009020D1 /* Frameworks */,
-				0663D69A1BC14474009020D1 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				0663D69E1BC14474009020D1 /* PBXTargetDependency */,
-			);
-			name = PocSideMenuUITests;
-			productName = PocSideMenuUITests;
-			productReference = 0663D69C1BC14474009020D1 /* PocSideMenuUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -238,14 +165,6 @@
 					0663D67C1BC14474009020D1 = {
 						CreatedOnToolsVersion = 7.0.1;
 						DevelopmentTeam = K6P2K6D2S5;
-					};
-					0663D6901BC14474009020D1 = {
-						CreatedOnToolsVersion = 7.0.1;
-						TestTargetID = 0663D67C1BC14474009020D1;
-					};
-					0663D69B1BC14474009020D1 = {
-						CreatedOnToolsVersion = 7.0.1;
-						TestTargetID = 0663D67C1BC14474009020D1;
 					};
 				};
 			};
@@ -263,8 +182,6 @@
 			projectRoot = "";
 			targets = (
 				0663D67C1BC14474009020D1 /* PocSideMenu */,
-				0663D6901BC14474009020D1 /* PocSideMenuTests */,
-				0663D69B1BC14474009020D1 /* PocSideMenuUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -277,20 +194,6 @@
 				0663D68B1BC14474009020D1 /* LaunchScreen.storyboard in Resources */,
 				0663D6881BC14474009020D1 /* Assets.xcassets in Resources */,
 				0663D6861BC14474009020D1 /* Main.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		0663D68F1BC14474009020D1 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		0663D69A1BC14474009020D1 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -313,36 +216,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		0663D68D1BC14474009020D1 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				0663D6961BC14474009020D1 /* PocSideMenuTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		0663D6981BC14474009020D1 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				0663D6A11BC14474009020D1 /* PocSideMenuUITests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		0663D6931BC14474009020D1 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 0663D67C1BC14474009020D1 /* PocSideMenu */;
-			targetProxy = 0663D6921BC14474009020D1 /* PBXContainerItemProxy */;
-		};
-		0663D69E1BC14474009020D1 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 0663D67C1BC14474009020D1 /* PocSideMenu */;
-			targetProxy = 0663D69D1BC14474009020D1 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		0663D6841BC14474009020D1 /* Main.storyboard */ = {
@@ -475,54 +349,6 @@
 			};
 			name = Release;
 		};
-		0663D6A91BC14474009020D1 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				INFOPLIST_FILE = PocSideMenuTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = bm842.PocSideMenuTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PocSideMenu.app/PocSideMenu";
-			};
-			name = Debug;
-		};
-		0663D6AA1BC14474009020D1 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				INFOPLIST_FILE = PocSideMenuTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = bm842.PocSideMenuTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PocSideMenu.app/PocSideMenu";
-			};
-			name = Release;
-		};
-		0663D6AC1BC14474009020D1 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				INFOPLIST_FILE = PocSideMenuUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = bm842.PocSideMenuUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_TARGET_NAME = PocSideMenu;
-				USES_XCTRUNNER = YES;
-			};
-			name = Debug;
-		};
-		0663D6AD1BC14474009020D1 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				INFOPLIST_FILE = PocSideMenuUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = bm842.PocSideMenuUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_TARGET_NAME = PocSideMenu;
-				USES_XCTRUNNER = YES;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -540,24 +366,6 @@
 			buildConfigurations = (
 				0663D6A61BC14474009020D1 /* Debug */,
 				0663D6A71BC14474009020D1 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		0663D6A81BC14474009020D1 /* Build configuration list for PBXNativeTarget "PocSideMenuTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				0663D6A91BC14474009020D1 /* Debug */,
-				0663D6AA1BC14474009020D1 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		0663D6AB1BC14474009020D1 /* Build configuration list for PBXNativeTarget "PocSideMenuUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				0663D6AC1BC14474009020D1 /* Debug */,
-				0663D6AD1BC14474009020D1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
