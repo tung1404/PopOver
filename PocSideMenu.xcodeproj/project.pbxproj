@@ -18,22 +18,8 @@
 		0663D6B51BC14EC4009020D1 /* SideMenuNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0663D6B41BC14EC4009020D1 /* SideMenuNavigationController.swift */; settings = {ASSET_TAGS = (); }; };
 		0663D6BC1BC1B092009020D1 /* ViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0663D6BB1BC1B092009020D1 /* ViewControllerExtension.swift */; settings = {ASSET_TAGS = (); }; };
 		067934711BC299EE0038B2EA /* SideMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067934701BC299EE0038B2EA /* SideMenuController.swift */; settings = {ASSET_TAGS = (); }; };
-		068F7E471BCCF992001425B7 /* Logger.framework.dSYM in CopyFiles */ = {isa = PBXBuildFile; fileRef = 068F7E461BCCF992001425B7 /* Logger.framework.dSYM */; };
 		068F7E491BCCFB9C001425B7 /* Logger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 068F7E481BCCFB9C001425B7 /* Logger.framework */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		068F7E451BCCF904001425B7 /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 16;
-			files = (
-				068F7E471BCCF992001425B7 /* Logger.framework.dSYM in CopyFiles */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		064D6E761BCA7C5300EDDD91 /* Child3ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Child3ViewController.swift; sourceTree = "<group>"; };
@@ -80,9 +66,9 @@
 		0663D6741BC14474009020D1 = {
 			isa = PBXGroup;
 			children = (
-				068F7E4A1BCCFD7D001425B7 /* Externals */,
 				0663D67F1BC14474009020D1 /* PocSideMenu */,
 				0663D67E1BC14474009020D1 /* Products */,
+				068F7E4A1BCCFD7D001425B7 /* Externals */,
 			);
 			sourceTree = "<group>";
 		};
@@ -136,8 +122,6 @@
 				0663D6791BC14474009020D1 /* Sources */,
 				0663D67A1BC14474009020D1 /* Frameworks */,
 				0663D67B1BC14474009020D1 /* Resources */,
-				068F7E441BCCF828001425B7 /* ShellScript */,
-				068F7E451BCCF904001425B7 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -193,23 +177,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		068F7E441BCCF828001425B7 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/iOS/Logger.framework",
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/carthage copy-frameworks";
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		0663D6791BC14474009020D1 /* Sources */ = {
