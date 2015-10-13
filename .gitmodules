@@ -1,4 +1,0 @@
-[submodule "Logger"]
-	path = Logger
-	url = https://github.com/bm842/Logger.git
-	branch = feature/xcodecolors
