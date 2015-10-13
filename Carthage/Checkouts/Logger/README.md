@@ -1,10 +1,23 @@
 # Logger
 
+[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
+
 Logger is a proof of concept for a simple logging tool written in Swift 2
 
-## Quick start
+## Installation
 
-- Add `Logger.framework` to your project
+`Logger` is built as a framework.
+
+### Installation with Carthage
+
+- Edit you `Cartfile`with a new entry for the `Logger` framework:
+
+	```
+	github "bm842/Logger" "master"
+	```
+* Then follow the instructions from Carthage help [here](https://github.com/Carthage/Carthage#getting-started)
+
+## Quick start
 
 - Declare a `Logger` instance in a source file
 
@@ -51,10 +64,6 @@ Logger is a proof of concept for a simple logging tool written in Swift 2
 	2015-10-09 20:53:43.203 +0200: ERROR: ViewController(42):  Error!
 	2015-10-09 20:53:43.204 +0200: CRIT : ViewController(43):  Critical error!
 	```
-
-## Installation
-
-`Logger` is built as a framework.
 
 ## Configuration rules
 
