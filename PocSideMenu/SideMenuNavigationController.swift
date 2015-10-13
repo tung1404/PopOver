@@ -9,17 +9,17 @@
 import UIKit
 
 @IBDesignable
-class SideMenuNavigationController: UINavigationController
+public class SideMenuNavigationController: UINavigationController
 {
     @IBInspectable
-    var sideMenuBundleName: String!;
+    public var sideMenuBundleName: String!;
     
     @IBInspectable
-    var sideMenuViewControllerIdentifier: String!;
+    public var sideMenuViewControllerIdentifier: String!;
     
     var sideMenuController: SideMenuController!
     
-    override func viewDidLoad()
+    override public func viewDidLoad()
     {
         super.viewDidLoad()
 

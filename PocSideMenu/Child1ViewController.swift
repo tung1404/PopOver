@@ -8,6 +8,7 @@
 
 import UIKit
 import Logger
+import SideMenu
 
 private let log = Logger()
 

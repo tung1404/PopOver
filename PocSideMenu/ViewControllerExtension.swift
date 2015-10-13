@@ -11,9 +11,9 @@ import Logger
 
 private let log = Logger()
 
-extension UIViewController
+public extension UIViewController
 {
-    func sideMenuEnable()
+    public func sideMenuEnable()
     {
         let recognizer = UIScreenEdgePanGestureRecognizer(target: self, action: "sideMenuSlideScreenEdge:")
         
@@ -154,7 +154,7 @@ extension UIViewController
         sideMenu()?.toggle(InViewController: self)
     }
     
-    func sideMenu() -> SideMenuController?
+    internal func sideMenu() -> SideMenuController?
     {
         return (navigationController as? SideMenuNavigationController)?.sideMenuController
     }
