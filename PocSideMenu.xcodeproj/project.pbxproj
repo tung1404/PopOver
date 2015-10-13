@@ -28,10 +28,6 @@
 		0663D6871BC14474009020D1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0663D68A1BC14474009020D1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0663D68C1BC14474009020D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		0663D6951BC14474009020D1 /* PocSideMenuTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PocSideMenuTests.swift; sourceTree = "<group>"; };
-		0663D6971BC14474009020D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		0663D6A01BC14474009020D1 /* PocSideMenuUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PocSideMenuUITests.swift; sourceTree = "<group>"; };
-		0663D6A21BC14474009020D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0663D6AE1BC14C2C009020D1 /* Child1ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Child1ViewController.swift; sourceTree = "<group>"; };
 		0663D6B01BC14D41009020D1 /* Child2ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Child2ViewController.swift; sourceTree = "<group>"; };
 		0663D6B21BC14DE5009020D1 /* SideMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideMenuViewController.swift; sourceTree = "<group>"; };
@@ -67,8 +63,6 @@
 			isa = PBXGroup;
 			children = (
 				0663D67F1BC14474009020D1 /* PocSideMenu */,
-				0663D6941BC14474009020D1 /* PocSideMenuTests */,
-				0663D69F1BC14474009020D1 /* PocSideMenuUITests */,
 				0663D67E1BC14474009020D1 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -93,24 +87,6 @@
 				0663D68C1BC14474009020D1 /* Info.plist */,
 			);
 			path = PocSideMenu;
-			sourceTree = "<group>";
-		};
-		0663D6941BC14474009020D1 /* PocSideMenuTests */ = {
-			isa = PBXGroup;
-			children = (
-				0663D6951BC14474009020D1 /* PocSideMenuTests.swift */,
-				0663D6971BC14474009020D1 /* Info.plist */,
-			);
-			path = PocSideMenuTests;
-			sourceTree = "<group>";
-		};
-		0663D69F1BC14474009020D1 /* PocSideMenuUITests */ = {
-			isa = PBXGroup;
-			children = (
-				0663D6A01BC14474009020D1 /* PocSideMenuUITests.swift */,
-				0663D6A21BC14474009020D1 /* Info.plist */,
-			);
-			path = PocSideMenuUITests;
 			sourceTree = "<group>";
 		};
 		0663D6BA1BC1614C009020D1 /* SideMenu */ = {
