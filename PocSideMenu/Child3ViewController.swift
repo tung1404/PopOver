@@ -41,7 +41,7 @@ class Child3TableViewController: UITableViewController {
 
     override func viewWillDisappear(animated: Bool)
     {
-        sideMenu()?.hide(WithAnimation: false)
+        hideSideMenu(WithAnimation: false)
     }
     
     @IBAction func toggleSideMenuCommand(sender: UIBarButtonItem)
