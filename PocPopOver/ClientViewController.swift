@@ -21,13 +21,18 @@ class ClientViewController: UIViewController
         popOverController.show(InViewController: self)//, AtPosition: .RightEdgeAt(200) )
     }
     
+    @IBAction func buttonCommand(sender: UIButton)
+    {
+        log.debug("view.frame = \(view.frame)")
+    }
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
 
-        let content = ExamplePopOverViewController()
-        //content.preferredContentSize = CGSize(width: 200,height: 200)
-        
+        let content =
+        UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("Example2") as UIViewController
+
         popOverController = PopOverController(PopOverViewController: content)
     }
 

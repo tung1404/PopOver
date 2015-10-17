@@ -113,10 +113,10 @@
 		0663D67F1BC14474009020D1 /* PocPopOver */ = {
 			isa = PBXGroup;
 			children = (
-				0605D59B1BD2DA2800BB19AE /* Main.storyboard */,
 				062B941B1BD22AAB00E6BB43 /* AppDelegate.swift */,
 				062B94181BD22AAB00E6BB43 /* ClientViewController.swift */,
 				0605D5971BD2B1AB00BB19AE /* ExamplePopOverViewController.swift */,
+				0605D59B1BD2DA2800BB19AE /* Main.storyboard */,
 				062B941C1BD22AAB00E6BB43 /* Assets.xcassets */,
 				062B941A1BD22AAB00E6BB43 /* Info.plist */,
 			);
