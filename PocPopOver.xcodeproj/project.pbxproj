@@ -7,20 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		062B94221BD22AAB00E6BB43 /* Child1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 062B94181BD22AAB00E6BB43 /* Child1ViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		062B94231BD22AAB00E6BB43 /* SideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 062B94191BD22AAB00E6BB43 /* SideMenuViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		0605D5981BD2B1AB00BB19AE /* ExamplePopOverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0605D5971BD2B1AB00BB19AE /* ExamplePopOverViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		0605D59A1BD2D9E400BB19AE /* PopOverController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0605D5991BD2D9E400BB19AE /* PopOverController.swift */; settings = {ASSET_TAGS = (); }; };
+		0605D5A01BD2DB1500BB19AE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0605D59B1BD2DA2800BB19AE /* Main.storyboard */; };
+		062B94221BD22AAB00E6BB43 /* ClientViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 062B94181BD22AAB00E6BB43 /* ClientViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		062B94251BD22AAB00E6BB43 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 062B941B1BD22AAB00E6BB43 /* AppDelegate.swift */; settings = {ASSET_TAGS = (); }; };
 		062B94261BD22AAB00E6BB43 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 062B941C1BD22AAB00E6BB43 /* Assets.xcassets */; settings = {ASSET_TAGS = (); }; };
-		062B94271BD22AAB00E6BB43 /* Child2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 062B941D1BD22AAB00E6BB43 /* Child2ViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		062B94281BD22AAB00E6BB43 /* Child3ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 062B941E1BD22AAB00E6BB43 /* Child3ViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		062B94301BD22B3500E6BB43 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 062B942C1BD22B3500E6BB43 /* LaunchScreen.storyboard */; settings = {ASSET_TAGS = (); }; };
-		062B94311BD22B3500E6BB43 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 062B942E1BD22B3500E6BB43 /* Main.storyboard */; settings = {ASSET_TAGS = (); }; };
 		062B943A1BD22C2900E6BB43 /* PopOver.h in Headers */ = {isa = PBXBuildFile; fileRef = 062B94391BD22C2900E6BB43 /* PopOver.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		062B943E1BD22C2900E6BB43 /* PopOver.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 062B94371BD22C2900E6BB43 /* PopOver.framework */; };
 		062B943F1BD22C2900E6BB43 /* PopOver.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 062B94371BD22C2900E6BB43 /* PopOver.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		062B94431BD22CAA00E6BB43 /* SideMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 062B941F1BD22AAB00E6BB43 /* SideMenuController.swift */; };
-		062B94441BD22CAA00E6BB43 /* SideMenuNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 062B94201BD22AAB00E6BB43 /* SideMenuNavigationController.swift */; };
-		062B94451BD22CAA00E6BB43 /* ViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 062B94211BD22AAB00E6BB43 /* ViewControllerExtension.swift */; };
 		062B94461BD22CDE00E6BB43 /* Logger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 066530E51BCD886E00900C84 /* Logger.framework */; };
 		066530E91BCD88BF00900C84 /* Logger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 066530E51BCD886E00900C84 /* Logger.framework */; };
 /* End PBXBuildFile section */
@@ -50,18 +45,13 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		062B94181BD22AAB00E6BB43 /* Child1ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Child1ViewController.swift; path = PocPopOver/Child1ViewController.swift; sourceTree = SOURCE_ROOT; };
-		062B94191BD22AAB00E6BB43 /* SideMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SideMenuViewController.swift; path = PocPopOver/SideMenuViewController.swift; sourceTree = SOURCE_ROOT; };
+		0605D5971BD2B1AB00BB19AE /* ExamplePopOverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ExamplePopOverViewController.swift; path = PocPopOver/ExamplePopOverViewController.swift; sourceTree = SOURCE_ROOT; };
+		0605D5991BD2D9E400BB19AE /* PopOverController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopOverController.swift; sourceTree = "<group>"; };
+		0605D59C1BD2DA2800BB19AE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = PocPopOver/Base.lproj/Main.storyboard; sourceTree = SOURCE_ROOT; };
+		062B94181BD22AAB00E6BB43 /* ClientViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ClientViewController.swift; path = PocPopOver/ClientViewController.swift; sourceTree = SOURCE_ROOT; };
 		062B941A1BD22AAB00E6BB43 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = PocPopOver/Info.plist; sourceTree = SOURCE_ROOT; };
 		062B941B1BD22AAB00E6BB43 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = PocPopOver/AppDelegate.swift; sourceTree = SOURCE_ROOT; };
 		062B941C1BD22AAB00E6BB43 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = PocPopOver/Assets.xcassets; sourceTree = SOURCE_ROOT; };
-		062B941D1BD22AAB00E6BB43 /* Child2ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Child2ViewController.swift; path = PocPopOver/Child2ViewController.swift; sourceTree = SOURCE_ROOT; };
-		062B941E1BD22AAB00E6BB43 /* Child3ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Child3ViewController.swift; path = PocPopOver/Child3ViewController.swift; sourceTree = SOURCE_ROOT; };
-		062B941F1BD22AAB00E6BB43 /* SideMenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SideMenuController.swift; path = PocPopOver/SideMenuController.swift; sourceTree = SOURCE_ROOT; };
-		062B94201BD22AAB00E6BB43 /* SideMenuNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SideMenuNavigationController.swift; path = PocPopOver/SideMenuNavigationController.swift; sourceTree = SOURCE_ROOT; };
-		062B94211BD22AAB00E6BB43 /* ViewControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewControllerExtension.swift; path = PocPopOver/ViewControllerExtension.swift; sourceTree = SOURCE_ROOT; };
-		062B942D1BD22B3500E6BB43 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = PocPopOver/Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		062B942F1BD22B3500E6BB43 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = PocPopOver/Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		062B94371BD22C2900E6BB43 /* PopOver.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PopOver.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		062B94391BD22C2900E6BB43 /* PopOver.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PopOver.h; sourceTree = "<group>"; };
 		062B943B1BD22C2900E6BB43 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -94,9 +84,7 @@
 		062B94381BD22C2900E6BB43 /* PopOver */ = {
 			isa = PBXGroup;
 			children = (
-				062B941F1BD22AAB00E6BB43 /* SideMenuController.swift */,
-				062B94201BD22AAB00E6BB43 /* SideMenuNavigationController.swift */,
-				062B94211BD22AAB00E6BB43 /* ViewControllerExtension.swift */,
+				0605D5991BD2D9E400BB19AE /* PopOverController.swift */,
 				062B94391BD22C2900E6BB43 /* PopOver.h */,
 				062B943B1BD22C2900E6BB43 /* Info.plist */,
 			);
@@ -125,15 +113,12 @@
 		0663D67F1BC14474009020D1 /* PocPopOver */ = {
 			isa = PBXGroup;
 			children = (
-				062B942C1BD22B3500E6BB43 /* LaunchScreen.storyboard */,
-				062B942E1BD22B3500E6BB43 /* Main.storyboard */,
-				062B94181BD22AAB00E6BB43 /* Child1ViewController.swift */,
-				062B94191BD22AAB00E6BB43 /* SideMenuViewController.swift */,
-				062B941A1BD22AAB00E6BB43 /* Info.plist */,
+				0605D59B1BD2DA2800BB19AE /* Main.storyboard */,
 				062B941B1BD22AAB00E6BB43 /* AppDelegate.swift */,
+				062B94181BD22AAB00E6BB43 /* ClientViewController.swift */,
+				0605D5971BD2B1AB00BB19AE /* ExamplePopOverViewController.swift */,
 				062B941C1BD22AAB00E6BB43 /* Assets.xcassets */,
-				062B941D1BD22AAB00E6BB43 /* Child2ViewController.swift */,
-				062B941E1BD22AAB00E6BB43 /* Child3ViewController.swift */,
+				062B941A1BD22AAB00E6BB43 /* Info.plist */,
 			);
 			name = PocPopOver;
 			path = PocSideMenu;
@@ -206,6 +191,7 @@
 		0663D6751BC14474009020D1 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Bertrand Marlier";
 				TargetAttributes = {
@@ -250,9 +236,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				062B94301BD22B3500E6BB43 /* LaunchScreen.storyboard in Resources */,
+				0605D5A01BD2DB1500BB19AE /* Main.storyboard in Resources */,
 				062B94261BD22AAB00E6BB43 /* Assets.xcassets in Resources */,
-				062B94311BD22B3500E6BB43 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -280,9 +265,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				062B94431BD22CAA00E6BB43 /* SideMenuController.swift in Sources */,
-				062B94441BD22CAA00E6BB43 /* SideMenuNavigationController.swift in Sources */,
-				062B94451BD22CAA00E6BB43 /* ViewControllerExtension.swift in Sources */,
+				0605D59A1BD2D9E400BB19AE /* PopOverController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -290,11 +273,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0605D5981BD2B1AB00BB19AE /* ExamplePopOverViewController.swift in Sources */,
 				062B94251BD22AAB00E6BB43 /* AppDelegate.swift in Sources */,
-				062B94221BD22AAB00E6BB43 /* Child1ViewController.swift in Sources */,
-				062B94281BD22AAB00E6BB43 /* Child3ViewController.swift in Sources */,
-				062B94231BD22AAB00E6BB43 /* SideMenuViewController.swift in Sources */,
-				062B94271BD22AAB00E6BB43 /* Child2ViewController.swift in Sources */,
+				062B94221BD22AAB00E6BB43 /* ClientViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -309,22 +290,12 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		062B942C1BD22B3500E6BB43 /* LaunchScreen.storyboard */ = {
+		0605D59B1BD2DA2800BB19AE /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				062B942D1BD22B3500E6BB43 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			path = ..;
-			sourceTree = "<group>";
-		};
-		062B942E1BD22B3500E6BB43 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				062B942F1BD22B3500E6BB43 /* Base */,
+				0605D59C1BD2DA2800BB19AE /* Base */,
 			);
 			name = Main.storyboard;
-			path = ..;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -333,6 +304,7 @@
 		062B94411BD22C2A00E6BB43 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
@@ -350,6 +322,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "Bertrand-Marlier.PopOver";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -358,6 +331,7 @@
 		062B94421BD22C2A00E6BB43 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
@@ -466,7 +440,6 @@
 		0663D6A61BC14474009020D1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
@@ -485,7 +458,6 @@
 		0663D6A71BC14474009020D1 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
@@ -511,6 +483,7 @@
 				062B94421BD22C2A00E6BB43 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		0663D6781BC14474009020D1 /* Build configuration list for PBXProject "PocPopOver" */ = {
 			isa = XCConfigurationList;
