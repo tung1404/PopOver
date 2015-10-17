@@ -17,6 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool
     {
+        Logger.set(DefaultSink: XcodeColorsPrintLogSink())
         Logger.set(AllowedLevel: Level.Debug)
         
         return true

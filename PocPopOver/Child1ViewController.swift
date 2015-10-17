@@ -8,7 +8,7 @@
 
 import UIKit
 import Logger
-import SideMenu
+import PopOver
 
 private let log = Logger()
 
