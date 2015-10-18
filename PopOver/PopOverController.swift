@@ -9,9 +9,18 @@
 import UIKit
 import Logger
 
-private let log = Logger()
+public enum PopOverPosition
+{
+    case Left
+    //case Right
+    //case Top
+    //case Bottom
+    case Center
+}
 
-public enum SideMenuPosition
+internal let log = Logger(WithName: "PopOver")
+
+enum SideMenuPosition
 {
     case RightEdgeAt(CGFloat)
     case LeftEdgeAt(CGFloat)
@@ -32,7 +41,7 @@ class PopOverMaskView: UIView
     {
         log.debug("%f")
         
-        popOverController.hide()
+        popOverController.dismiss()
     }
     
 }
@@ -43,10 +52,15 @@ struct Constants
     static let MinVelocity: CGFloat = 600 // points/s
     static let ZeroVelocityTrigger: CGFloat = 50 // points/s
     static let MaskAlpha: CGFloat = 0.2
+    static let PopOverFadingDuration: NSTimeInterval = 0.25
 }
 
 public class PopOverController: NSObject, UIGestureRecognizerDelegate
 {
+    // before show
+    //public let fillEdge = true
+    
+    
     //weak var navigationController: SideMenuNavigationController!
     weak var clientViewController: UIViewController!
     
@@ -54,7 +68,8 @@ public class PopOverController: NSObject, UIGestureRecognizerDelegate
     var popOverView: UIView!
     var clientView: UIView!
     var popOverViewController: UIViewController!
-
+    var popOverPosition: PopOverPosition
+    
     var fullyDeployed: Bool
     {
         return popOverView.frame.origin.x == 0
@@ -62,8 +77,11 @@ public class PopOverController: NSObject, UIGestureRecognizerDelegate
 
     var lockedPanAxis: PanAxis = .Undefined
     
-    public init(PopOverViewController popOverViewController: UIViewController)
+    public init(PopOverViewController popOverViewController: UIViewController, AtPosition position: PopOverPosition)
     {
+        self.popOverViewController = popOverViewController
+        self.popOverPosition = position
+        
         super.init()
         
         //self.navigationController = navigationController
@@ -71,23 +89,59 @@ public class PopOverController: NSObject, UIGestureRecognizerDelegate
         maskView = PopOverMaskView()
         maskView.popOverController = self
         
-        self.popOverViewController = popOverViewController
-        //UIStoryboard(name: bundle,
-        //    bundle: nil).instantiateViewControllerWithIdentifier(identifier) as UIViewController
-        
         popOverView = popOverViewController.view
         
         popOverView.layer.shadowRadius  = 5;
         popOverView.layer.shadowOpacity = 0.4;
         popOverView.clipsToBounds = false
-        
-        let panRecognizer = UIPanGestureRecognizer(target: self, action: "sideMenuPanHandler:")
-        
-        panRecognizer.delegate = self
-        
-        popOverView.addGestureRecognizer(panRecognizer)
-        
 
+        self.maskView.backgroundColor = UIColor(hue: 0, saturation: 0, brightness: 0, alpha: 0)
+
+        switch position
+        {
+            case .Left:
+                let panRecognizer = UIPanGestureRecognizer(target: self, action: "sideMenuPanHandler:")
+                panRecognizer.delegate = self
+                popOverView.addGestureRecognizer(panRecognizer)
+                
+                popOverView.layer.cornerRadius = 0;
+            
+            case .Center:
+                popOverView.layer.cornerRadius = 10;
+        }
+        
+        //popOverView.layer.masksToBounds = true;
+        //popOverView.systemLayoutSizeFittingSize(UILayoutFittingCompressedSize)
+        //        popOverView.systemLayoutSizeFittingSize(CGSize(width: 300,height: 300), withHorizontalFittingPriority: UILayoutPriorityFittingSizeLevel, verticalFittingPriority: UILayoutPriorityFittingSizeLevel)
+        //popOverView.translatesAutoresizingMaskIntoConstraints = false
+        
+        
+    }
+    
+    public func present(InViewController viewController: UIViewController)
+    {
+        attach(InViewController: viewController)
+        
+        switch popOverPosition
+        {
+            case .Left:
+                move(ToPosition: SideMenuPosition.LeftEdgeAt(0))
+                
+            case .Center:
+                UIView.animateWithDuration(Constants.PopOverFadingDuration)
+                {
+                    self.popOverView.alpha = 1
+                    self.maskView.backgroundColor = UIColor(hue: 0, saturation: 0, brightness: 0, alpha: Constants.MaskAlpha)
+                }
+                break
+        }
+        
+        
+        // TODO: possibly need to move this in side menu and not popover
+        /*let recognizer = UIScreenEdgePanGestureRecognizer(target: self, action: "sideMenuSlideScreenEdge:")
+        recognizer.edges = UIRectEdge.Left
+        viewController.view.addGestureRecognizer(recognizer)
+        viewController.edgesForExtendedLayout = UIRectEdge.None;*/
     }
     
     // MARK: - UIGestureRecognizerDelegate
@@ -98,6 +152,61 @@ public class PopOverController: NSObject, UIGestureRecognizerDelegate
     }
     
     // MARK: - API
+    
+    func attach(InViewController viewController: UIViewController)
+    {
+        guard viewController !== clientViewController else
+        {
+            log.info("%f: side Menu is already inserted")
+            return
+        }
+        
+        detach()
+        
+        log.debug("%f: show side menu")
+        
+        clientView = viewController.view
+        clientViewController = viewController
+        
+        maskView.frame = CGRect(
+            x: 0,
+            y: 0,
+            width: clientView.frame.width,
+            height: clientView.frame.height)
+        
+        clientView.addSubview(maskView)
+        clientView.addSubview(popOverView)
+        clientViewController.addChildViewController(popOverViewController)
+        popOverViewController.didMoveToParentViewController(viewController)
+        
+        switch popOverPosition
+        {
+            case .Left:
+                popOverView.alpha = 1
+                
+                popOverView.frame = CGRect(
+                    x: -clientView.frame.width + Constants.MarginWidth,
+                    y: 0,
+                    width: clientView.frame.width - Constants.MarginWidth,
+                    height: clientView.frame.height)
+            
+            case .Center:
+                popOverView.alpha = 0
+                
+                popOverView.frame = CGRect(
+                    x: (clientView.frame.width - popOverView.frame.width)/2,
+                    y: (clientView.frame.height - popOverView.frame.height)/2,
+                    width: popOverView.frame.width,
+                    height: popOverView.frame.height)
+        }
+        
+        
+        if let scrollView = popOverView as? UIScrollView
+        {
+            log.debug("reset scroll view")
+            scrollView.contentOffset = CGPointZero
+        }
+    }
     
     func detach()
     {
@@ -117,7 +226,18 @@ public class PopOverController: NSObject, UIGestureRecognizerDelegate
         clientViewController = nil
     }
     
-    func hide(WithVelocity velocity: CGFloat? = nil, WithAnimation animation: Bool = true)
+    public func dismiss()
+    {
+        guard clientViewController != nil else
+        {
+            log.info("%f: pop over is not active")
+            return
+        }
+        
+        dismiss(WithVelocity: 0)
+    }
+    
+    func dismiss(WithVelocity velocity: CGFloat, WithAnimation animation: Bool = true)
     {
         let detachAction: (Bool)->Void =
         {
@@ -129,7 +249,19 @@ public class PopOverController: NSObject, UIGestureRecognizerDelegate
         
         if animation
         {
-            move(ToPosition: SideMenuPosition.RightEdgeAt(0), WithVelocity: velocity, WithCompletion: detachAction)
+            switch popOverPosition
+            {
+                case .Left:
+                    move(ToPosition: SideMenuPosition.RightEdgeAt(0), WithVelocity: velocity, WithCompletion: detachAction)
+                
+                case .Center:
+                    UIView.animateWithDuration(Constants.PopOverFadingDuration, animations:
+                    {
+                        self.popOverView.alpha = 0
+                        self.maskView.backgroundColor = UIColor(hue: 0, saturation: 0, brightness: 0, alpha: 0)
+                    }, completion: detachAction)
+                
+            }
         }
         else
         {
@@ -197,6 +329,8 @@ public class PopOverController: NSObject, UIGestureRecognizerDelegate
             animate()
             completion?(true)
         }
+        
+        //popOverView.layoutIfNeeded()
     }
 
     func drop(var WithVelocity velocity: CGFloat)
@@ -216,7 +350,7 @@ public class PopOverController: NSObject, UIGestureRecognizerDelegate
         
         if velocity < 0 || (velocity == 0 && popOverView.frame.origin.x < -popOverView.frame.width * 0.5)
         {
-            hide(WithVelocity: velocity)
+            dismiss(WithVelocity: velocity)
         }
         else
         {
@@ -224,54 +358,14 @@ public class PopOverController: NSObject, UIGestureRecognizerDelegate
         }
     }
 
-    public func show(InViewController viewController: UIViewController, AtPosition position: SideMenuPosition = SideMenuPosition.LeftEdgeAt(0))
+    func present(InViewController viewController: UIViewController, AtPosition position: SideMenuPosition)
     {
-        guard viewController.view.subviews.contains(popOverView) == false else
-        {
-            log.info("%f: side Menu is already inserted")
-            return
-        }
-        
-        detach()
-        
-        log.debug("%f: show side menu")
-        
-        maskView.frame = CGRect(
-            x: 0,
-            y: 0,
-            width: viewController.view.frame.width,
-            height: viewController.view.frame.height)
-        
-        popOverView.frame = CGRect(
-            x: -viewController.view.frame.width + Constants.MarginWidth,
-            y: 0,
-            width: viewController.view.frame.width - Constants.MarginWidth,
-            height: viewController.view.frame.height)
-        
-        viewController.view.addSubview(maskView)
-        viewController.view.addSubview(popOverView)
-        viewController.addChildViewController(popOverViewController)
-        popOverViewController.didMoveToParentViewController(viewController)
-        
-        clientView = viewController.view
-        clientViewController = viewController
-        
-        if let scrollView = popOverView as? UIScrollView
-        {
-            log.debug("reset scroll view")
-            scrollView.contentOffset = CGPointZero
-        }
+        attach(InViewController: viewController)
         
         move(ToPosition: position)
-        
-        // TODO: possibly need to move this in side menu and not popover
-        /*let recognizer = UIScreenEdgePanGestureRecognizer(target: self, action: "sideMenuSlideScreenEdge:")
-        recognizer.edges = UIRectEdge.Left
-        viewController.view.addGestureRecognizer(recognizer)
-        viewController.edgesForExtendedLayout = UIRectEdge.None;*/
     }
     
-    func toggle(InViewController viewController: UIViewController)
+    /*func toggle(InViewController viewController: UIViewController)
     {
         if viewController.view.subviews.contains(popOverView)
         {
@@ -281,7 +375,7 @@ public class PopOverController: NSObject, UIGestureRecognizerDelegate
         {
             show(InViewController: viewController)
         }
-    }
+    }*/
     
     func sideMenuSlideScreenEdge(recognizer: UIScreenEdgePanGestureRecognizer)
     {
@@ -295,7 +389,7 @@ public class PopOverController: NSObject, UIGestureRecognizerDelegate
                 
             case .Began:
                 // the recognizer has received touches recognized as the gesture. the action method will be called at the next turn of the run loop
-                show(InViewController: clientViewController,
+                present(InViewController: clientViewController,
                     AtPosition: SideMenuPosition.RightEdgeAt(recognizer.translationInView(clientView).x))
                 
             case .Changed:

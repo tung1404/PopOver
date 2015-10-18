@@ -15,25 +15,44 @@ private let log = Logger()
 class ClientViewController: UIViewController
 {
     var popOverController: PopOverController!
+    var content: UIViewController!
+    
+    @IBAction func configureLeft(sender: UIButton)
+    {
+        //popOverController?.dismiss()
+        
+        popOverController = PopOverController(PopOverViewController: content, AtPosition: .Left)
+        
+        //content.view.sizeToFit()
+    }
+    
+    @IBAction func configureRight(sender: UIButton)
+    {
+        //popOverController?.dismiss()
+        
+        content.view.frame = CGRect(x: 0,y: 0,width: 200,height: 300)
+        //let size = content.view.sizeThatFits(CGSize(width: 200,height: 100))
+        //content.view.frame = CGRect(x: 0,y: 0,width: size.width,height: size.height)
+        
+        popOverController = PopOverController(PopOverViewController: content, AtPosition: .Center)
+    }
     
     @IBAction func showPopOverCommand(sender: UIButton)
     {
-        popOverController.show(InViewController: self)//, AtPosition: .RightEdgeAt(200) )
-    }
-    
-    @IBAction func buttonCommand(sender: UIButton)
-    {
-        log.debug("view.frame = \(view.frame)")
+        popOverController.present(InViewController: self)
     }
     
     override func viewDidLoad()
     {
         super.viewDidLoad()
 
-        let content =
-        UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("Example2") as UIViewController
+        content = UIStoryboard(name: "Main", bundle: nil)
+            .instantiateViewControllerWithIdentifier("Example2") as UIViewController
 
-        popOverController = PopOverController(PopOverViewController: content)
+        //content.preferredContentSize = CGSize(width: 50,height: 50)
+        //content.view.preservesSuperviewLayoutMargins = true
+        //content.view.layoutMargins = UIEdgeInsets(top: 8,left: 8,bottom: 8,right: 8)
+        
     }
 
 }
