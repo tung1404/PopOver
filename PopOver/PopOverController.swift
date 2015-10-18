@@ -77,14 +77,14 @@ public class PopOverController: NSObject, UIGestureRecognizerDelegate
 
     var lockedPanAxis: PanAxis = .Undefined
     
+    // MARK: - API
+    
     public init(PopOverViewController popOverViewController: UIViewController, AtPosition position: PopOverPosition)
     {
         self.popOverViewController = popOverViewController
         self.popOverPosition = position
         
         super.init()
-        
-        //self.navigationController = navigationController
         
         maskView = PopOverMaskView()
         maskView.popOverController = self
@@ -100,7 +100,7 @@ public class PopOverController: NSObject, UIGestureRecognizerDelegate
         switch position
         {
             case .Left:
-                let panRecognizer = UIPanGestureRecognizer(target: self, action: "sideMenuPanHandler:")
+                let panRecognizer = UIPanGestureRecognizer(target: self, action: "popOverPanHandler:")
                 panRecognizer.delegate = self
                 popOverView.addGestureRecognizer(panRecognizer)
                 
@@ -114,8 +114,6 @@ public class PopOverController: NSObject, UIGestureRecognizerDelegate
         //popOverView.systemLayoutSizeFittingSize(UILayoutFittingCompressedSize)
         //        popOverView.systemLayoutSizeFittingSize(CGSize(width: 300,height: 300), withHorizontalFittingPriority: UILayoutPriorityFittingSizeLevel, verticalFittingPriority: UILayoutPriorityFittingSizeLevel)
         //popOverView.translatesAutoresizingMaskIntoConstraints = false
-        
-        
     }
     
     public func present(InViewController viewController: UIViewController)
@@ -135,13 +133,17 @@ public class PopOverController: NSObject, UIGestureRecognizerDelegate
                 }
                 break
         }
+    }
+    
+    public func dismiss()
+    {
+        guard clientViewController != nil else
+        {
+            log.info("%f: pop over is not active")
+            return
+        }
         
-        
-        // TODO: possibly need to move this in side menu and not popover
-        /*let recognizer = UIScreenEdgePanGestureRecognizer(target: self, action: "sideMenuSlideScreenEdge:")
-        recognizer.edges = UIRectEdge.Left
-        viewController.view.addGestureRecognizer(recognizer)
-        viewController.edgesForExtendedLayout = UIRectEdge.None;*/
+        dismiss(WithVelocity: 0)
     }
     
     // MARK: - UIGestureRecognizerDelegate
@@ -151,7 +153,7 @@ public class PopOverController: NSObject, UIGestureRecognizerDelegate
         return fullyDeployed
     }
     
-    // MARK: - API
+    // MARK: - Implementation
     
     func attach(InViewController viewController: UIViewController)
     {
@@ -224,17 +226,6 @@ public class PopOverController: NSObject, UIGestureRecognizerDelegate
         maskView.removeFromSuperview()
         
         clientViewController = nil
-    }
-    
-    public func dismiss()
-    {
-        guard clientViewController != nil else
-        {
-            log.info("%f: pop over is not active")
-            return
-        }
-        
-        dismiss(WithVelocity: 0)
     }
     
     func dismiss(WithVelocity velocity: CGFloat, WithAnimation animation: Bool = true)
@@ -377,7 +368,9 @@ public class PopOverController: NSObject, UIGestureRecognizerDelegate
         }
     }*/
     
-    func sideMenuSlideScreenEdge(recognizer: UIScreenEdgePanGestureRecognizer)
+    public func onScreenEdgePanEvent(
+        InViewController viewController: UIViewController,
+        recognizer: UIScreenEdgePanGestureRecognizer)
     {
         log.debug("%f: state = \(recognizer.state.rawValue)")
         
@@ -389,7 +382,7 @@ public class PopOverController: NSObject, UIGestureRecognizerDelegate
                 
             case .Began:
                 // the recognizer has received touches recognized as the gesture. the action method will be called at the next turn of the run loop
-                present(InViewController: clientViewController,
+                present(InViewController: viewController,
                     AtPosition: SideMenuPosition.RightEdgeAt(recognizer.translationInView(clientView).x))
                 
             case .Changed:
@@ -422,7 +415,7 @@ public class PopOverController: NSObject, UIGestureRecognizerDelegate
         }
     }
     
-    func sideMenuPanHandler(recognizer: UIPanGestureRecognizer)
+    func popOverPanHandler(recognizer: UIPanGestureRecognizer)
     {
         log.debug("%f: state = \(recognizer.state.rawValue)")
         
