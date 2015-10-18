@@ -27,7 +27,7 @@ class ClientViewController: UIViewController
     
     @IBAction func configureRight(sender: UIButton)
     {
-        content.view.frame = CGRect(x: 0,y: 0,width: 200,height: 162)
+        content.view.frame = CGRect(x: 0,y: 0,width: 200,height: 170)
         //let size = content.view.sizeThatFits(CGSize(width: 200,height: 100))
         //content.view.frame = CGRect(x: 0,y: 0,width: size.width,height: size.height)
         

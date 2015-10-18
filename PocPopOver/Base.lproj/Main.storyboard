@@ -72,43 +72,45 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PopOver Line 1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mhG-zP-uOr">
-                                <rect key="frame" x="20" y="20" width="560" height="21"/>
+                                <rect key="frame" x="20" y="28" width="560" height="21"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PopOver Line 2" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rka-eS-34W">
-                                <rect key="frame" x="20" y="49" width="560" height="21"/>
+                                <rect key="frame" x="20" y="57" width="560" height="21"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PopOver Line 3" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kfw-31-zIz">
-                                <rect key="frame" x="20" y="78" width="560" height="21"/>
+                                <rect key="frame" x="20" y="86" width="560" height="21"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nc0-v2-XBa">
-                                <rect key="frame" x="20" y="145" width="276" height="30"/>
+                                <rect key="frame" x="20" y="153" width="276" height="30"/>
                                 <animations/>
-                                <color key="backgroundColor" red="1" green="0.40000000600000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="mx9-rP-VvZ"/>
                                 </constraints>
                                 <state key="normal" title="Cancel"/>
+                                <connections>
+                                    <action selector="commandCancel:" destination="zLC-f3-Z9I" eventType="touchUpInside" id="KkK-LF-sqt"/>
+                                </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="V1D-jS-z1L">
-                                <rect key="frame" x="20" y="107" width="560" height="30"/>
+                                <rect key="frame" x="20" y="115" width="560" height="30"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rfh-uF-FtZ">
-                                <rect key="frame" x="304" y="145" width="276" height="30"/>
+                                <rect key="frame" x="304" y="153" width="276" height="30"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="274" id="0dJ-uP-TLB"/>
@@ -122,10 +124,13 @@
                                         <exclude reference="0dJ-uP-TLB"/>
                                     </mask>
                                 </variation>
+                                <connections>
+                                    <action selector="commandDone:" destination="zLC-f3-Z9I" eventType="touchUpInside" id="0gm-5M-ILU"/>
+                                </connections>
                             </button>
                         </subviews>
                         <animations/>
-                        <color key="backgroundColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="rfh-uF-FtZ" firstAttribute="leading" secondItem="nc0-v2-XBa" secondAttribute="trailing" constant="8" symbolic="YES" id="3M3-Jb-sNw"/>
                             <constraint firstItem="kfw-31-zIz" firstAttribute="top" secondItem="Rka-eS-34W" secondAttribute="bottom" constant="8" id="5cs-BE-DYb"/>
@@ -140,7 +145,7 @@
                             <constraint firstAttribute="leadingMargin" secondItem="kfw-31-zIz" secondAttribute="leading" id="VqY-yK-Hat"/>
                             <constraint firstItem="V1D-jS-z1L" firstAttribute="top" secondItem="kfw-31-zIz" secondAttribute="bottom" constant="8" id="Zqm-Wi-7gg"/>
                             <constraint firstItem="nc0-v2-XBa" firstAttribute="baseline" secondItem="rfh-uF-FtZ" secondAttribute="baseline" id="cPc-xT-ZYL"/>
-                            <constraint firstItem="Rka-eS-34W" firstAttribute="top" secondItem="mhG-zP-uOr" secondAttribute="bottom" constant="8" id="cke-8z-s6U"/>
+                            <constraint firstItem="Rka-eS-34W" firstAttribute="top" secondItem="mhG-zP-uOr" secondAttribute="bottom" constant="8" symbolic="YES" id="cke-8z-s6U"/>
                             <constraint firstAttribute="trailingMargin" secondItem="rfh-uF-FtZ" secondAttribute="trailing" id="d0n-cp-1Ep"/>
                             <constraint firstAttribute="trailingMargin" secondItem="kfw-31-zIz" secondAttribute="trailing" id="ePe-zL-m78"/>
                             <constraint firstAttribute="leadingMargin" secondItem="mhG-zP-uOr" secondAttribute="leading" id="fUE-CL-Y8b"/>
@@ -151,7 +156,7 @@
                             <constraint firstItem="8cu-bt-h6k" firstAttribute="top" secondItem="nc0-v2-XBa" secondAttribute="bottom" constant="8" id="mXT-6y-x2V"/>
                             <constraint firstAttribute="leadingMargin" secondItem="V1D-jS-z1L" secondAttribute="leading" id="mss-L0-4ra"/>
                             <constraint firstItem="rfh-uF-FtZ" firstAttribute="baseline" secondItem="nc0-v2-XBa" secondAttribute="baseline" id="vqz-7f-KPx"/>
-                            <constraint firstItem="mhG-zP-uOr" firstAttribute="top" secondItem="UEC-3W-GYi" secondAttribute="bottom" id="vtl-nr-lvS"/>
+                            <constraint firstItem="mhG-zP-uOr" firstAttribute="top" secondItem="UEC-3W-GYi" secondAttribute="bottom" constant="8" symbolic="YES" id="vtl-nr-lvS"/>
                             <constraint firstItem="rfh-uF-FtZ" firstAttribute="trailing" secondItem="V1D-jS-z1L" secondAttribute="trailing" id="zFX-Ub-6pO"/>
                         </constraints>
                         <variation key="default">
