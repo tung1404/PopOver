@@ -10,8 +10,6 @@ import UIKit
 import PopOver
 import Logger
 
-private let log = Logger()
-
 class ExamplePopOverViewController: UIViewController
 {
     @IBAction func commandCancel(sender: UIButton)

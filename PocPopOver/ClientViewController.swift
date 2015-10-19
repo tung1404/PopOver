@@ -10,8 +10,6 @@ import UIKit
 import Logger
 import PopOver
 
-private let log = Logger()
-
 class ClientViewController: UIViewController
 {
     var popOverController: PopOverController!
