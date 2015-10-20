@@ -13,12 +13,14 @@ import PopOver
 class ClientViewController: UIViewController
 {
     var popOverController: PopOverController!
-    var content: UIViewController!
+    var content: ExamplePopOverViewController!
     var recognizer: UIScreenEdgePanGestureRecognizer!
     
     @IBAction func configureLeft(sender: UIButton)
     {
         popOverController = PopOverController(PopOverViewController: content, AtPosition: .Left)
+
+        content.popOverController = popOverController
         
         view.addGestureRecognizer(recognizer)
     }
@@ -30,6 +32,8 @@ class ClientViewController: UIViewController
         //content.view.frame = CGRect(x: 0,y: 0,width: size.width,height: size.height)
         
         popOverController = PopOverController(PopOverViewController: content, AtPosition: .Center)
+
+        content.popOverController = popOverController
         
         view.removeGestureRecognizer(recognizer)
     }
@@ -44,7 +48,7 @@ class ClientViewController: UIViewController
         super.viewDidLoad()
 
         content = UIStoryboard(name: "Main", bundle: nil)
-            .instantiateViewControllerWithIdentifier("Example2") as UIViewController
+            .instantiateViewControllerWithIdentifier("Example2") as! ExamplePopOverViewController
         
         //content.view.clipsToBounds = true
         //content.preferredContentSize = CGSize(width: 50,height: 50)

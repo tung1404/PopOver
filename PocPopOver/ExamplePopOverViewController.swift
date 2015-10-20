@@ -12,15 +12,18 @@ import Logger
 
 class ExamplePopOverViewController: UIViewController
 {
+    weak var popOverController: PopOverController!
+    
     @IBAction func commandCancel(sender: UIButton)
     {
         log.debug("%f")
-        //PopOverController.getControllerInstance(ForPopOverViewController: self).dismiss()
+        popOverController.dismiss()
     }
     
     @IBAction func commandDone(sender: UIButton)
     {
         log.debug("%f")
+        popOverController.dismiss()
     }
     
     override func viewDidLoad()

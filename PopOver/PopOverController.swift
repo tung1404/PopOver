@@ -57,11 +57,6 @@ struct Constants
 
 public class PopOverController: NSObject, UIGestureRecognizerDelegate
 {
-    // before show
-    //public let fillEdge = true
-    
-    
-    //weak var navigationController: SideMenuNavigationController!
     weak var clientViewController: UIViewController!
     
     var maskView: PopOverMaskView!
