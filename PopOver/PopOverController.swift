@@ -202,7 +202,7 @@ public class PopOverController: NSObject, UIGestureRecognizerDelegate
         }
     }
     
-    public func dismiss()
+    public func dismiss(WithAnimation animation: Bool = true)
     {
         guard clientViewController != nil else
         {
@@ -210,7 +210,7 @@ public class PopOverController: NSObject, UIGestureRecognizerDelegate
             return
         }
         
-        dismiss(WithVelocity: 0)
+        dismiss(WithVelocity: 0, WithAnimation: animation)
     }
     
     // MARK: - UIGestureRecognizerDelegate
