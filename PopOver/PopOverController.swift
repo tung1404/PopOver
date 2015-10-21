@@ -419,17 +419,10 @@ public class PopOverController: NSObject, UIGestureRecognizerDelegate
         move(ToPosition: position)
     }
     
-    /*func toggle(InViewController viewController: UIViewController)
+    public var attached: Bool
     {
-        if viewController.view.subviews.contains(popOverView)
-        {
-            hide()
-        }
-        else
-        {
-            show(InViewController: viewController)
-        }
-    }*/
+        return clientView.subviews.contains(popOverView)
+    }
     
     public func onScreenEdgePanEvent(
         InViewController viewController: UIViewController,
