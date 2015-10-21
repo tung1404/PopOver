@@ -14,6 +14,8 @@ class ExamplePopOverViewController: UIViewController
 {
     weak var popOverController: PopOverController!
     
+    @IBOutlet weak var textField: UITextField!
+    
     @IBAction func commandCancel(sender: UIButton)
     {
         log.debug("%f")
@@ -29,6 +31,10 @@ class ExamplePopOverViewController: UIViewController
     override func viewDidLoad()
     {
         super.viewDidLoad()
-
+    }
+    
+    override func viewDidAppear(animated: Bool)
+    {
+        textField.becomeFirstResponder()
     }
 }

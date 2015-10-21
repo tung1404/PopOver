@@ -25,11 +25,9 @@ class ClientViewController: UIViewController
         view.addGestureRecognizer(recognizer)
     }
     
-    @IBAction func configureRight(sender: UIButton)
+    @IBAction func configureCenter(sender: UIButton)
     {
-        content.view.frame = CGRect(x: 0,y: 0,width: 200,height: 170)
-        //let size = content.view.sizeThatFits(CGSize(width: 200,height: 100))
-        //content.view.frame = CGRect(x: 0,y: 0,width: size.width,height: size.height)
+        content.view.frame = CGRect(x: 0,y: 0,width: 320,height: 202)
         
         popOverController = PopOverController(PopOverViewController: content, AtPosition: .Center)
 
@@ -49,11 +47,6 @@ class ClientViewController: UIViewController
 
         content = UIStoryboard(name: "Main", bundle: nil)
             .instantiateViewControllerWithIdentifier("Example2") as! ExamplePopOverViewController
-        
-        //content.view.clipsToBounds = true
-        //content.preferredContentSize = CGSize(width: 50,height: 50)
-        //content.view.preservesSuperviewLayoutMargins = true
-        //content.view.layoutMargins = UIEdgeInsets(top: 8,left: 8,bottom: 8,right: 8)
         
         recognizer = UIScreenEdgePanGestureRecognizer(target: self, action: "screenEdgePanHandler:")
         

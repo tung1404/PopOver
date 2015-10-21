@@ -41,7 +41,15 @@ class PopOverMaskView: UIView
     {
         log.debug("%f")
         
-        popOverController.dismiss()
+        if popOverController.keyboardMode
+        {
+            popOverController.popOverView.endEditing(true)
+        }
+        else
+        {
+            popOverController.dismiss()
+        }
+        
     }
     
 }
@@ -53,6 +61,7 @@ struct Constants
     static let ZeroVelocityTrigger: CGFloat = 50 // points/s
     static let MaskAlpha: CGFloat = 0.2
     static let PopOverFadingDuration: NSTimeInterval = 0.25
+    static let PopOverAlpha: CGFloat = 0.8
 }
 
 public class PopOverController: NSObject, UIGestureRecognizerDelegate
@@ -64,13 +73,13 @@ public class PopOverController: NSObject, UIGestureRecognizerDelegate
     var clientView: UIView!
     var popOverViewController: UIViewController!
     var popOverPosition: PopOverPosition
+    var lockedPanAxis: PanAxis = .Undefined
+    var keyboardMode = false
     
     var fullyDeployed: Bool
     {
         return popOverView.frame.origin.x == 0
     }
-
-    var lockedPanAxis: PanAxis = .Undefined
     
     // MARK: - API
     
@@ -103,12 +112,75 @@ public class PopOverController: NSObject, UIGestureRecognizerDelegate
             
             case .Center:
                 popOverView.layer.cornerRadius = 10;
+                
+                NSNotificationCenter.defaultCenter().addObserver(self,
+                    selector: Selector("keyboardWillShow:"),
+                    name: UIKeyboardWillShowNotification, object: nil)
+                
+                NSNotificationCenter.defaultCenter().addObserver(self,
+                    selector: Selector("keyboardWillHide:"),
+                    name: UIKeyboardWillHideNotification, object: nil)
+        }
+    }
+    
+    func keyboardWillShow(notification: NSNotification)
+    {
+        guard keyboardMode == false else
+        {
+            log.error("%f: keyboardMode already active")
+            return
         }
         
-        //popOverView.layer.masksToBounds = true;
-        //popOverView.systemLayoutSizeFittingSize(UILayoutFittingCompressedSize)
-        //        popOverView.systemLayoutSizeFittingSize(CGSize(width: 300,height: 300), withHorizontalFittingPriority: UILayoutPriorityFittingSizeLevel, verticalFittingPriority: UILayoutPriorityFittingSizeLevel)
-        //popOverView.translatesAutoresizingMaskIntoConstraints = false
+        let info = notification.userInfo
+        
+        let size = info![UIKeyboardFrameEndUserInfoKey]?.CGRectValue
+        
+        log.debug("%f size=\(size)")
+        
+        keyboardMode = true
+        
+        let hiddenHeight = size!.height - (clientView.frame.height - popOverView.frame.height)/2
+        
+        log.debug("clientView.frame = \(clientView.frame)")
+        log.debug("popOverView.frame = \(popOverView.frame)")
+        log.debug("hiddenHeight = \(hiddenHeight)")
+        
+        if hiddenHeight > 0
+        {
+            UIView.animateWithDuration(0.25)
+            {
+                self.moveToCenterPosition(WithYOffset: -hiddenHeight)
+            }
+            
+            log.debug("popOverView.frame = \(popOverView.frame)")
+        }
+    }
+    
+    func moveToCenterPosition(WithYOffset yOffset: CGFloat = 0)
+    {
+        popOverView.frame = CGRect(
+            x: 0,
+            y: (self.clientView.frame.height - self.popOverView.frame.height)/2 + yOffset,
+            width: self.clientView.frame.width,
+            height: self.popOverView.frame.height)
+    }
+    
+    func keyboardWillHide(notification: NSNotification)
+    {
+        guard keyboardMode else
+        {
+            log.error("%f: keyboardMode not active")
+            return
+        }
+        
+        log.debug("%f")
+        
+        keyboardMode = false
+        
+        UIView.animateWithDuration(0.25)
+        {
+            self.moveToCenterPosition()
+        }
     }
     
     public func present(InViewController viewController: UIViewController)
@@ -123,7 +195,7 @@ public class PopOverController: NSObject, UIGestureRecognizerDelegate
             case .Center:
                 UIView.animateWithDuration(Constants.PopOverFadingDuration)
                 {
-                    self.popOverView.alpha = 1
+                    self.popOverView.alpha = Constants.PopOverAlpha
                     self.maskView.backgroundColor = UIColor(hue: 0, saturation: 0, brightness: 0, alpha: Constants.MaskAlpha)
                 }
                 break
@@ -179,7 +251,7 @@ public class PopOverController: NSObject, UIGestureRecognizerDelegate
         switch popOverPosition
         {
             case .Left:
-                popOverView.alpha = 1
+                popOverView.alpha = Constants.PopOverAlpha
                 
                 popOverView.frame = CGRect(
                     x: -clientView.frame.width + Constants.MarginWidth,
@@ -190,11 +262,7 @@ public class PopOverController: NSObject, UIGestureRecognizerDelegate
             case .Center:
                 popOverView.alpha = 0
                 
-                popOverView.frame = CGRect(
-                    x: (clientView.frame.width - popOverView.frame.width)/2,
-                    y: (clientView.frame.height - popOverView.frame.height)/2,
-                    width: popOverView.frame.width,
-                    height: popOverView.frame.height)
+                moveToCenterPosition()
         }
         
         
