@@ -289,6 +289,7 @@ public class PopOverController: NSObject, UIGestureRecognizerDelegate
         maskView.removeFromSuperview()
         
         clientViewController = nil
+        clientView = nil
     }
     
     func dismiss(WithVelocity velocity: CGFloat, WithAnimation animation: Bool = true)
@@ -421,7 +422,7 @@ public class PopOverController: NSObject, UIGestureRecognizerDelegate
     
     public var attached: Bool
     {
-        return clientView.subviews.contains(popOverView)
+        return clientView == nil ? false : clientView.subviews.contains(popOverView)
     }
     
     public func onScreenEdgePanEvent(
