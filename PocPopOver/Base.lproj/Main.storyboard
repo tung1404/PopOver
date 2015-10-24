@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="k0M-90-iWQ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="k0M-90-iWQ">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -33,7 +33,7 @@
                                     <action selector="configureCenter:" destination="k0M-90-iWQ" eventType="touchUpInside" id="ygV-dz-vEl"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PIm-De-YDl">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PIm-De-YDl">
                                 <rect key="frame" x="20" y="550" width="560" height="30"/>
                                 <animations/>
                                 <state key="normal" title="Show PopOver View"/>
@@ -41,23 +41,44 @@
                                     <action selector="showPopOverCommand:" destination="k0M-90-iWQ" eventType="touchUpInside" id="oZK-le-XR9"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g8p-xP-1FC">
+                                <rect key="frame" x="20" y="20" width="560" height="67"/>
+                                <animations/>
+                                <color key="backgroundColor" red="0.0" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="67" id="2M7-CQ-po7"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OiF-87-lDL">
+                                <rect key="frame" x="489" y="20" width="91" height="560"/>
+                                <animations/>
+                                <color key="backgroundColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="91" id="HtS-PU-84e"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="4Yn-xR-idc" firstAttribute="baseline" secondItem="c6n-RR-gYl" secondAttribute="baseline" id="4T1-k1-DP9"/>
-                            <constraint firstItem="4Yn-xR-idc" firstAttribute="centerY" secondItem="yFI-sf-pgo" secondAttribute="centerY" id="K0L-B8-WI2"/>
-                            <constraint firstItem="PIm-De-YDl" firstAttribute="trailing" secondItem="yFI-sf-pgo" secondAttribute="trailingMargin" id="MdQ-wv-BR9"/>
-                            <constraint firstItem="PIm-De-YDl" firstAttribute="leading" secondItem="c6n-RR-gYl" secondAttribute="leading" id="eqP-hq-fLP"/>
-                            <constraint firstItem="PIm-De-YDl" firstAttribute="centerX" secondItem="4Yn-xR-idc" secondAttribute="centerX" id="hkl-Lb-8IB"/>
-                            <constraint firstItem="c6n-RR-gYl" firstAttribute="leading" secondItem="yFI-sf-pgo" secondAttribute="leadingMargin" id="oSa-bG-MfM"/>
-                            <constraint firstAttribute="bottom" secondItem="PIm-De-YDl" secondAttribute="bottom" constant="20" symbolic="YES" id="yIm-is-VGv"/>
+                            <constraint firstItem="QFd-vH-fRC" firstAttribute="top" secondItem="PIm-De-YDl" secondAttribute="bottom" constant="20" id="Eqv-5M-spR"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="g8p-xP-1FC" secondAttribute="trailing" id="FcO-B7-CzU"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="OiF-87-lDL" secondAttribute="trailing" id="PCj-XL-IS1"/>
+                            <constraint firstItem="4Yn-xR-idc" firstAttribute="centerX" secondItem="yFI-sf-pgo" secondAttribute="centerX" id="QAa-TW-1dE"/>
+                            <constraint firstItem="OiF-87-lDL" firstAttribute="top" secondItem="p6p-5Y-QRm" secondAttribute="bottom" id="S1e-aX-vGs"/>
+                            <constraint firstItem="4Yn-xR-idc" firstAttribute="centerY" secondItem="yFI-sf-pgo" secondAttribute="centerY" id="YYa-gF-zxy"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="c6n-RR-gYl" secondAttribute="leading" id="bcW-0s-uNA"/>
+                            <constraint firstItem="QFd-vH-fRC" firstAttribute="top" secondItem="OiF-87-lDL" secondAttribute="bottom" constant="20" id="ged-de-bVe"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="g8p-xP-1FC" secondAttribute="leading" id="kRa-Mv-sT0"/>
+                            <constraint firstItem="g8p-xP-1FC" firstAttribute="top" secondItem="p6p-5Y-QRm" secondAttribute="bottom" id="kdA-Cx-Qxu"/>
+                            <constraint firstItem="c6n-RR-gYl" firstAttribute="centerY" secondItem="yFI-sf-pgo" secondAttribute="centerY" id="qNS-Rr-2tc"/>
+                            <constraint firstItem="PIm-De-YDl" firstAttribute="centerX" secondItem="yFI-sf-pgo" secondAttribute="centerX" id="voK-Cp-Wra"/>
                         </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WBe-Ud-VdP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1152" y="967"/>
+            <point key="canvasLocation" x="1147" y="910"/>
         </scene>
         <!--PopOver ViewController-->
         <scene sceneID="bTc-4Y-jVi">
@@ -71,7 +92,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" preservesSuperviewLayoutMargins="YES" text="PopOver Line 1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mhG-zP-uOr">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" preservesSuperviewLayoutMargins="YES" text="This is a PopOver" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mhG-zP-uOr">
                                 <rect key="frame" x="20" y="28" width="560" height="30"/>
                                 <animations/>
                                 <constraints>
@@ -101,7 +122,7 @@
                                     </mask>
                                 </variation>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" preservesSuperviewLayoutMargins="YES" text="PopOver Line 3" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kfw-31-zIz">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" preservesSuperviewLayoutMargins="YES" text="Enter some text below" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kfw-31-zIz">
                                 <rect key="frame" x="20" y="104" width="560" height="30"/>
                                 <animations/>
                                 <constraints>
@@ -170,7 +191,6 @@
                             </button>
                         </subviews>
                         <animations/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="8cu-bt-h6k" firstAttribute="top" secondItem="rfh-uF-FtZ" secondAttribute="bottom" constant="8" symbolic="YES" id="033-wC-Owy"/>
                             <constraint firstItem="rfh-uF-FtZ" firstAttribute="leading" secondItem="nc0-v2-XBa" secondAttribute="trailing" constant="8" symbolic="YES" id="3M3-Jb-sNw"/>

@@ -61,7 +61,7 @@ struct Constants
     static let ZeroVelocityTrigger: CGFloat = 50 // points/s
     static let MaskAlpha: CGFloat = 0.2
     static let PopOverFadingDuration: NSTimeInterval = 0.25
-    static let PopOverAlpha: CGFloat = 0.8
+    static let PopOverAlpha: CGFloat = 0.7
 }
 
 public class PopOverController: NSObject, UIGestureRecognizerDelegate
@@ -69,6 +69,7 @@ public class PopOverController: NSObject, UIGestureRecognizerDelegate
     weak var clientViewController: UIViewController!
     
     var maskView: PopOverMaskView!
+    var effectView: UIView!
     var popOverView: UIView!
     var clientView: UIView!
     var popOverViewController: UIViewController!
@@ -99,6 +100,9 @@ public class PopOverController: NSObject, UIGestureRecognizerDelegate
         popOverView.layer.shadowOpacity = 0.4;
         popOverView.clipsToBounds = false
 
+        effectView = UIVisualEffectView(effect: UIBlurEffect(style: .Light))
+        popOverView.backgroundColor = UIColor.whiteColor()
+        
         self.maskView.backgroundColor = UIColor(hue: 0, saturation: 0, brightness: 0, alpha: 0)
 
         switch position
@@ -108,10 +112,12 @@ public class PopOverController: NSObject, UIGestureRecognizerDelegate
                 panRecognizer.delegate = self
                 popOverView.addGestureRecognizer(panRecognizer)
                 
-                popOverView.layer.cornerRadius = 0;
+                popOverView.layer.cornerRadius = 0
+                effectView.layer.cornerRadius = 0
             
             case .Center:
-                popOverView.layer.cornerRadius = 10;
+                popOverView.layer.cornerRadius = 10
+                effectView.layer.cornerRadius = 10
                 
                 NSNotificationCenter.defaultCenter().addObserver(self,
                     selector: Selector("keyboardWillShow:"),
@@ -163,6 +169,8 @@ public class PopOverController: NSObject, UIGestureRecognizerDelegate
             y: (self.clientView.frame.height - self.popOverView.frame.height)/2 + yOffset,
             width: self.clientView.frame.width,
             height: self.popOverView.frame.height)
+        
+        self.effectView.frame = self.popOverView.frame
     }
     
     func keyboardWillHide(notification: NSNotification)
@@ -244,6 +252,7 @@ public class PopOverController: NSObject, UIGestureRecognizerDelegate
             height: clientView.frame.height)
         
         clientView.addSubview(maskView)
+        clientView.addSubview(effectView)
         clientView.addSubview(popOverView)
         clientViewController.addChildViewController(popOverViewController)
         popOverViewController.didMoveToParentViewController(viewController)
@@ -286,6 +295,7 @@ public class PopOverController: NSObject, UIGestureRecognizerDelegate
         popOverViewController.willMoveToParentViewController(nil)
         popOverViewController.removeFromParentViewController()
         popOverView.removeFromSuperview()
+        effectView.removeFromSuperview()
         maskView.removeFromSuperview()
         
         clientViewController = nil
@@ -364,6 +374,8 @@ public class PopOverController: NSObject, UIGestureRecognizerDelegate
                 y: currentFrame.origin.y,
                 width: currentFrame.width,
                 height: currentFrame.height)
+            
+            self.effectView.frame = self.popOverView.frame
             
             let alpha = (currentFrame.width + frameOriginX)/currentFrame.width * Constants.MaskAlpha
             
