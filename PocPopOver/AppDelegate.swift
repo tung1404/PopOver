@@ -9,7 +9,7 @@
 import UIKit
 import Logger
 
-let log = Logger(WithName: "DemoPopOver")
+let log = Logger(withName: "DemoPopOver")
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -19,10 +19,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool
     {
-        Logger.set(DefaultSink: XcodeColorsPrintLogSink())
-        Logger.set(RequiredLevel: Level.Debug)
+        Logger.defaultLogChain.logEventFormatter = DefaultLogEventFormatter(WithColorFormatter: XcodeColorsFormatter())
+        Logger.defaultLogChain.requiredLevel = .Debug
         
-        Logger.request(Level: .All, ForName: "PopOver")
+        Logger.request(level: .All, forLoggerNamed: "PopOver")
         
         return true
     }

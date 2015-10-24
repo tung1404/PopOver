@@ -18,7 +18,7 @@ public enum PopOverPosition
     case Center
 }
 
-internal let log = Logger(WithName: "PopOver")
+internal let log = Logger(withName: "PopOver")
 
 enum SideMenuPosition
 {
