@@ -7,17 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0605D5981BD2B1AB00BB19AE /* ExamplePopOverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0605D5971BD2B1AB00BB19AE /* ExamplePopOverViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		0605D59A1BD2D9E400BB19AE /* PopOverController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0605D5991BD2D9E400BB19AE /* PopOverController.swift */; settings = {ASSET_TAGS = (); }; };
+		0605D5981BD2B1AB00BB19AE /* PopOverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0605D5971BD2B1AB00BB19AE /* PopOverViewController.swift */; };
+		0605D59A1BD2D9E400BB19AE /* PopOverController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0605D5991BD2D9E400BB19AE /* PopOverController.swift */; };
 		0605D5A01BD2DB1500BB19AE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0605D59B1BD2DA2800BB19AE /* Main.storyboard */; };
-		062B94221BD22AAB00E6BB43 /* ClientViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 062B94181BD22AAB00E6BB43 /* ClientViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		062B94251BD22AAB00E6BB43 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 062B941B1BD22AAB00E6BB43 /* AppDelegate.swift */; settings = {ASSET_TAGS = (); }; };
-		062B94261BD22AAB00E6BB43 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 062B941C1BD22AAB00E6BB43 /* Assets.xcassets */; settings = {ASSET_TAGS = (); }; };
+		062B94221BD22AAB00E6BB43 /* ClientViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 062B94181BD22AAB00E6BB43 /* ClientViewController.swift */; };
+		062B94251BD22AAB00E6BB43 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 062B941B1BD22AAB00E6BB43 /* AppDelegate.swift */; };
+		062B94261BD22AAB00E6BB43 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 062B941C1BD22AAB00E6BB43 /* Assets.xcassets */; };
 		062B943A1BD22C2900E6BB43 /* PopOver.h in Headers */ = {isa = PBXBuildFile; fileRef = 062B94391BD22C2900E6BB43 /* PopOver.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		062B943E1BD22C2900E6BB43 /* PopOver.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 062B94371BD22C2900E6BB43 /* PopOver.framework */; };
 		062B943F1BD22C2900E6BB43 /* PopOver.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 062B94371BD22C2900E6BB43 /* PopOver.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		062B94461BD22CDE00E6BB43 /* Logger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 066530E51BCD886E00900C84 /* Logger.framework */; };
 		066530E91BCD88BF00900C84 /* Logger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 066530E51BCD886E00900C84 /* Logger.framework */; };
+		06D2C3311BDCE096001F52CE /* ClientTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D2C32F1BDCE096001F52CE /* ClientTableViewController.swift */; };
+		06D2C3321BDCE096001F52CE /* PopOverTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D2C3301BDCE096001F52CE /* PopOverTableViewController.swift */; };
+		06D2C3341BDD0B3D001F52CE /* ViewMonitor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06D2C3331BDD0B3D001F52CE /* ViewMonitor.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,7 +48,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		0605D5971BD2B1AB00BB19AE /* ExamplePopOverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ExamplePopOverViewController.swift; path = PocPopOver/ExamplePopOverViewController.swift; sourceTree = SOURCE_ROOT; };
+		0605D5971BD2B1AB00BB19AE /* PopOverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PopOverViewController.swift; path = PocPopOver/PopOverViewController.swift; sourceTree = SOURCE_ROOT; };
 		0605D5991BD2D9E400BB19AE /* PopOverController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopOverController.swift; sourceTree = "<group>"; };
 		0605D59C1BD2DA2800BB19AE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = PocPopOver/Base.lproj/Main.storyboard; sourceTree = SOURCE_ROOT; };
 		062B94181BD22AAB00E6BB43 /* ClientViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ClientViewController.swift; path = PocPopOver/ClientViewController.swift; sourceTree = SOURCE_ROOT; };
@@ -58,6 +61,9 @@
 		0663D67D1BC14474009020D1 /* PocPopOver.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PocPopOver.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		066530E31BCD881D00900C84 /* Logger.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = Logger.framework.dSYM; path = Carthage/Build/iOS/Logger.framework.dSYM; sourceTree = "<group>"; };
 		066530E51BCD886E00900C84 /* Logger.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Logger.framework; path = Carthage/Build/iOS/Logger.framework; sourceTree = "<group>"; };
+		06D2C32F1BDCE096001F52CE /* ClientTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ClientTableViewController.swift; path = PocPopOver/ClientTableViewController.swift; sourceTree = SOURCE_ROOT; };
+		06D2C3301BDCE096001F52CE /* PopOverTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PopOverTableViewController.swift; path = PocPopOver/PopOverTableViewController.swift; sourceTree = SOURCE_ROOT; };
+		06D2C3331BDD0B3D001F52CE /* ViewMonitor.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ViewMonitor.framework; path = Carthage/Build/iOS/ViewMonitor.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +81,7 @@
 			files = (
 				062B943E1BD22C2900E6BB43 /* PopOver.framework in Frameworks */,
 				066530E91BCD88BF00900C84 /* Logger.framework in Frameworks */,
+				06D2C3341BDD0B3D001F52CE /* ViewMonitor.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -94,6 +101,7 @@
 		0663D6741BC14474009020D1 = {
 			isa = PBXGroup;
 			children = (
+				06D2C3331BDD0B3D001F52CE /* ViewMonitor.framework */,
 				0663D67F1BC14474009020D1 /* PocPopOver */,
 				062B94381BD22C2900E6BB43 /* PopOver */,
 				0663D67E1BC14474009020D1 /* Products */,
@@ -114,8 +122,10 @@
 			isa = PBXGroup;
 			children = (
 				062B941B1BD22AAB00E6BB43 /* AppDelegate.swift */,
+				06D2C32F1BDCE096001F52CE /* ClientTableViewController.swift */,
+				06D2C3301BDCE096001F52CE /* PopOverTableViewController.swift */,
 				062B94181BD22AAB00E6BB43 /* ClientViewController.swift */,
-				0605D5971BD2B1AB00BB19AE /* ExamplePopOverViewController.swift */,
+				0605D5971BD2B1AB00BB19AE /* PopOverViewController.swift */,
 				0605D59B1BD2DA2800BB19AE /* Main.storyboard */,
 				062B941C1BD22AAB00E6BB43 /* Assets.xcassets */,
 				062B941A1BD22AAB00E6BB43 /* Info.plist */,
@@ -251,6 +261,7 @@
 			);
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/Logger.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/ViewMonitor.framework",
 			);
 			outputPaths = (
 			);
@@ -273,7 +284,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0605D5981BD2B1AB00BB19AE /* ExamplePopOverViewController.swift in Sources */,
+				06D2C3321BDCE096001F52CE /* PopOverTableViewController.swift in Sources */,
+				0605D5981BD2B1AB00BB19AE /* PopOverViewController.swift in Sources */,
+				06D2C3311BDCE096001F52CE /* ClientTableViewController.swift in Sources */,
 				062B94251BD22AAB00E6BB43 /* AppDelegate.swift in Sources */,
 				062B94221BD22AAB00E6BB43 /* ClientViewController.swift in Sources */,
 			);

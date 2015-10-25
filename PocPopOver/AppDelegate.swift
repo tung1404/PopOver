@@ -8,6 +8,7 @@
 
 import UIKit
 import Logger
+import ViewMonitor
 
 let log = Logger(withName: "DemoPopOver")
 
@@ -23,6 +24,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Logger.defaultLogChain.requiredLevel = .Debug
         
         Logger.request(level: .All, forLoggerNamed: "PopOver")
+        
+        //ViewMonitor.start()
         
         return true
     }

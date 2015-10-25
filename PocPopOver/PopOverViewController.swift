@@ -10,7 +10,7 @@ import UIKit
 import PopOver
 import Logger
 
-class ExamplePopOverViewController: UIViewController
+class PopOverViewController: UIViewController
 {
     weak var popOverController: PopOverController!
     

@@ -13,7 +13,7 @@ import PopOver
 class ClientViewController: UIViewController
 {
     var popOverController: PopOverController!
-    var content: ExamplePopOverViewController!
+    var content: PopOverViewController!
     var recognizer: UIScreenEdgePanGestureRecognizer!
     
     @IBAction func configureLeft(sender: UIButton)
@@ -46,7 +46,7 @@ class ClientViewController: UIViewController
         super.viewDidLoad()
 
         content = UIStoryboard(name: "Main", bundle: nil)
-            .instantiateViewControllerWithIdentifier("Example2") as! ExamplePopOverViewController
+            .instantiateViewControllerWithIdentifier("Example2") as! PopOverViewController
         
         recognizer = UIScreenEdgePanGestureRecognizer(target: self, action: "screenEdgePanHandler:")
         
