@@ -260,6 +260,12 @@ public class PopOverController: NSObject, UIGestureRecognizerDelegate
         clientViewController.addChildViewController(popOverViewController)
         popOverViewController.didMoveToParentViewController(viewController)
         
+        if let tableView = popOverView as? UITableView
+        {
+            tableView.bounces = false
+            tableView.sizeToFit()
+        }
+        
         switch popOverPosition
         {
             case .Left:
