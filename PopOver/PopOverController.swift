@@ -101,6 +101,8 @@ public class PopOverController: NSObject, UIGestureRecognizerDelegate
         popOverView.clipsToBounds = false
 
         effectView = UIVisualEffectView(effect: UIBlurEffect(style: .Light))
+        effectView.clipsToBounds = true
+        
         popOverView.backgroundColor = UIColor.whiteColor()
         
         self.maskView.backgroundColor = UIColor(hue: 0, saturation: 0, brightness: 0, alpha: 0)
