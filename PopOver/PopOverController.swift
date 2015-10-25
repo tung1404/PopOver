@@ -96,10 +96,11 @@ public class PopOverController: NSObject, UIGestureRecognizerDelegate
         
         popOverView = popOverViewController.view
         
+        popOverView.clipsToBounds = false
+        popOverView.layer.masksToBounds = true
         popOverView.layer.shadowRadius  = 5;
         popOverView.layer.shadowOpacity = 0.4;
-        popOverView.clipsToBounds = false
-
+        
         effectView = UIVisualEffectView(effect: UIBlurEffect(style: .Light))
         effectView.clipsToBounds = true
         
