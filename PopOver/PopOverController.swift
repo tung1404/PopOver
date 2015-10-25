@@ -274,11 +274,17 @@ public class PopOverController: NSObject, UIGestureRecognizerDelegate
                 moveToCenterPosition()
         }
         
-        
         if let scrollView = popOverView as? UIScrollView
         {
             log.debug("reset scroll view")
             scrollView.contentOffset = CGPointZero
+        }
+        
+        if let scrollView = clientView as? UIScrollView
+        {
+            log.debug("disable client scrollView")
+            
+            scrollView.scrollEnabled = false
         }
     }
     
@@ -291,6 +297,13 @@ public class PopOverController: NSObject, UIGestureRecognizerDelegate
         }
         
         log.debug("%f")
+        
+        if let scrollView = clientView as? UIScrollView
+        {
+            log.debug("enable client scrollView back")
+            
+            scrollView.scrollEnabled = true
+        }
         
         popOverViewController.willMoveToParentViewController(nil)
         popOverViewController.removeFromParentViewController()
